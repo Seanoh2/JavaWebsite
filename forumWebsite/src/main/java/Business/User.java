@@ -19,7 +19,7 @@ public class User implements Comparable<User> {
     private String Password;
 
     /**
-     * Fully constructed User constructor.
+     * Fully constructed User object.
      * Main constructor.
      * Should any information be missing, replace with a null where applicable.
      * 
