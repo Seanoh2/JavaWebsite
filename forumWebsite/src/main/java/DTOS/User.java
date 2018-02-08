@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business;
+package DTOS;
 
 import java.util.Objects;
 
@@ -17,6 +17,7 @@ public class User implements Comparable<User> {
     private String LastName;
     private String Email;
     private String Password;
+    private boolean isAdmin;
 
     /**
      * Fully constructed User object.
@@ -28,13 +29,15 @@ public class User implements Comparable<User> {
      * @param LastName Used by user to provide last name to display on forum.
      * @param Email Used to login to forum and to receive important information through email.
      * @param Password Used to secure account. Hashed with bCrypt.
+     * @param isAdmin
      */
-    public User(int userID, String FirstName, String LastName, String Email, String Password) {
+    public User(int userID, String FirstName, String LastName, String Email, String Password, boolean isAdmin) {
         this.userID = userID;
         this.FirstName = FirstName;
         this.LastName = LastName;
         this.Email = Email;
         this.Password = Password;
+        this.isAdmin = isAdmin;
     }
     
     /**
@@ -84,6 +87,14 @@ public class User implements Comparable<User> {
 
     public void setPassword(String Password) {
         this.Password = Password;
+    }
+    
+    public boolean getIsAdmin() {
+        return isAdmin;
+    }
+    
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
     @Override
