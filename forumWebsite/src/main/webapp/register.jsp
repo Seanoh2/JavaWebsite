@@ -15,8 +15,8 @@
         <h1>Register</h1>
         <form action="FrontController" method="post">
             <input type="hidden" value="register" name="action">
-            Username:
-            <input type="text" name="username">
+            Email:
+            <input type="text" name="email">
             <br>
             Password:
             <input type="text" name="password">
@@ -32,7 +32,7 @@
 
         <footer>
             <br><br>
-            <a href="login.html">Login</a>
+            <a href="index.html">Login</a>
             <br>
             <a href="register.jsp">Register</a>
             <br>

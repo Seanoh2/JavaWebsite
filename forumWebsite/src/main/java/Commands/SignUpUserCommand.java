@@ -20,7 +20,7 @@ public class SignUpUserCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         String forwardToJsp = "";
-        UserDAO userDao = new UserDAO("librarydatabase");
+        UserDAO userDao = new UserDAO("forumdatabase");
         HttpSession session = request.getSession();
         // Get the information entered into the form by the user
         // Get the parameters from the previous page       
@@ -40,7 +40,7 @@ public class SignUpUserCommand implements Command {
             //If the user was added sucessfully, they are told so and than logged in automatically.
             if (addUser) {
                 session.setAttribute("user", u);
-                forwardToJsp = "myHome.jsp";
+                forwardToJsp = "Home.jsp";
             } else {
                 //If any issues arised, they are not added and told so.
                 String errorMessage = "Error adding user to database";

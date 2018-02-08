@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import DTOS.Password;
 import DTOS.User;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import interfaces.UserDAOInterface;
@@ -46,7 +47,7 @@ public class UserDAO extends DAO implements UserDAOInterface {
         try {
             conn = getConnection();
 
-            String query = "SELECT * FROM users WHERE firstName = ? AND lastName = ?";
+            String query = "SELECTx * FROM users WHERE firstName = ? AND lastName = ?";
             ps = conn.prepareStatement(query);
             ps.setString(1, firstName);
             ps.setString(2, lastName);
@@ -90,6 +91,7 @@ public class UserDAO extends DAO implements UserDAOInterface {
      * @return ArrayList with users from the database with a name containing the
      * name parameter
      */
+    @Override
     public ArrayList<User> selectUserContainingName(String name) {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -202,12 +204,13 @@ public class UserDAO extends DAO implements UserDAOInterface {
 
         try {
             conn = getConnection();
+            String hashedPassword = Password.hashString(u.getPassword());
             String query = "INSERT INTO users VALUES (NULL, ?, ?, ?, ?, ?)";
             ps = conn.prepareStatement(query);
             ps.setString(1, u.getFirstName());
             ps.setString(2, u.getLastName());
             ps.setString(3, u.getEmail());
-            ps.setString(4, u.getPassword());
+            ps.setString(4, hashedPassword);
             ps.setBoolean(5, u.getIsAdmin());
 
             rs = ps.executeUpdate();
@@ -262,20 +265,19 @@ public class UserDAO extends DAO implements UserDAOInterface {
         {
             con = this.getConnection();
             
-            String query = "SELECT * FROM users WHERE email = ? AND password = ?";
+            String query = "SELECT * FROM users WHERE Email = ?";
             ps = con.prepareStatement(query);
-            ps.setString(1, email);
-            ps.setString(2, password);
-            
+            ps.setString(1, email);        
             rs = ps.executeQuery();
-            if (rs.next()) 
+            
+            if (rs.next() && Password.checkPassword(password, rs.getString("Password")))
             {
                 u = new User();
-                u.setUserID(rs.getInt("userID"));
-                u.setEmail(rs.getString("email"));
-                u.setPassword(rs.getString("password"));
-                u.setFirstName(rs.getString("firstName"));
-                u.setLastName(rs.getString("lastName"));
+                u.setUserID(rs.getInt("UserID"));
+                u.setEmail(rs.getString("Email"));
+                u.setPassword(rs.getString("Password"));
+                u.setFirstName(rs.getString("FirstName"));
+                u.setLastName(rs.getString("LastName"));
                 u.setIsAdmin(rs.getBoolean("isAdmin"));
             }
         } 

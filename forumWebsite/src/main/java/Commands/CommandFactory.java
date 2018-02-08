@@ -44,11 +44,10 @@ public class CommandFactory {
                     command = new LoginUserCommand();
                     break;
                     
-                case "signup":
+                case "register":
                     command = new SignUpUserCommand();
                     break;
-                    
-                
+        
                 default:
                     command = new NoValidActionCommand();
                     break;
