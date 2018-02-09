@@ -6,6 +6,7 @@
 package DTOS;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  *
@@ -13,47 +14,47 @@ import java.time.LocalDate;
  */
 public class Message {
 
-    private int MessageID;
-    private int SenderID;
-    private int ReceiverID;
+    private int messageID;
+    private User sender;
+    private User reciever;
     private int type;
     private LocalDate time;
     private String content;
 
-    public Message(int MessageID, int SenderID, int ReceiverID, int type, LocalDate time, String content) {
-        this.MessageID = MessageID;
-        this.SenderID = SenderID;
-        this.ReceiverID = ReceiverID;
+    public Message() {
+    }
+
+    public Message(int messageID, User sender, User reciever, int type, LocalDate time, String content) {
+        this.messageID = messageID;
+        this.sender = sender;
+        this.reciever = reciever;
         this.type = type;
         this.time = time;
         this.content = content;
     }
 
-    public Message() {
-    }
-
     public int getMessageID() {
-        return MessageID;
+        return messageID;
     }
 
-    public void setMessageID(int MessageID) {
-        this.MessageID = MessageID;
+    public void setMessageID(int messageID) {
+        this.messageID = messageID;
     }
 
-    public int getSenderID() {
-        return SenderID;
+    public User getSender() {
+        return sender;
     }
 
-    public void setSenderID(int SenderID) {
-        this.SenderID = SenderID;
+    public void setSender(User sender) {
+        this.sender = sender;
     }
 
-    public int getReceiverID() {
-        return ReceiverID;
+    public User getReciever() {
+        return reciever;
     }
 
-    public void setReceiverID(int ReceiverID) {
-        this.ReceiverID = ReceiverID;
+    public void setReciever(User reciever) {
+        this.reciever = reciever;
     }
 
     public int getType() {
@@ -81,15 +82,10 @@ public class Message {
     }
 
     @Override
-    public String toString() {
-        return "Message{" + "MessageID=" + MessageID + ", SenderID=" + SenderID + ", ReceiverID=" + ReceiverID + ", type=" + type + ", time=" + time + ", content=" + content + '}';
-    }
-
-    @Override
     public int hashCode() {
         int hash = 7;
-        hash = 23 * hash + this.MessageID;
-        hash = 23 * hash + this.SenderID;
+        hash = 97 * hash + this.messageID;
+        hash = 97 * hash + Objects.hashCode(this.sender);
         return hash;
     }
 
@@ -105,13 +101,18 @@ public class Message {
             return false;
         }
         final Message other = (Message) obj;
-        if (this.MessageID != other.MessageID) {
+        if (this.messageID != other.messageID) {
             return false;
         }
-        if (this.SenderID != other.SenderID) {
+        if (!Objects.equals(this.sender, other.sender)) {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" + "messageID=" + messageID + ", sender=" + sender + ", reciever=" + reciever + ", type=" + type + ", time=" + time + ", content=" + content + '}';
     }
 
 }

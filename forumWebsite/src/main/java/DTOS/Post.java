@@ -12,7 +12,7 @@ package DTOS;
 public class Post implements Comparable<Post> {
 
     private int postID;
-    private int userID;
+    private int poster;
     private int forumID;
     private boolean isLink;
     private String title;
@@ -20,8 +20,8 @@ public class Post implements Comparable<Post> {
     private int score;
 
     /**
-     * Fully constructed Post object
-     * Main constructor.
+     * Fully constructed Post object Main constructor.
+     *
      * @param postID
      * @param userID
      * @param forumID
@@ -32,7 +32,7 @@ public class Post implements Comparable<Post> {
      */
     public Post(int postID, int userID, int forumID, boolean isLink, String title, String content, int score) {
         this.postID = postID;
-        this.userID = userID;
+        this.poster = userID;
         this.forumID = forumID;
         this.isLink = isLink;
         this.title = title;
@@ -66,16 +66,16 @@ public class Post implements Comparable<Post> {
      *
      * @return
      */
-    public int getUserID() {
-        return userID;
+    public int getPoster() {
+        return poster;
     }
 
     /**
      *
-     * @param userID
+     * @param poster
      */
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void poser(int poster) {
+        this.poster = poster;
     }
 
     /**
@@ -160,7 +160,7 @@ public class Post implements Comparable<Post> {
 
     @Override
     public String toString() {
-        return "Post{" + "postID=" + postID + ", userID=" + userID + ", forumID=" + forumID + ", isLink=" + isLink + ", title=" + title + ", content=" + content + ", score=" + score + '}';
+        return "Post{" + "postID=" + postID + ", poster=" + poster + ", forumID=" + forumID + ", isLink=" + isLink + ", title=" + title + ", content=" + content + ", score=" + score + '}';
     }
 
     @Override

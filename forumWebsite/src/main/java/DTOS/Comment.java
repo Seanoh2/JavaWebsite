@@ -6,6 +6,7 @@
 package DTOS;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  *
@@ -13,18 +14,18 @@ import java.time.LocalDate;
  */
 public class Comment {
     private int commentID;
-    private int postID;
-    private int senderID;
-    private int ReceiverID;
+    private Post post;
+    private User sender;
+    private User receiver;
     private LocalDate time;
     private int score;
     private String content;
 
-    public Comment(int commentID, int postID, int senderID, int ReceiverID, LocalDate time, int score, String content) {
+    public Comment(int commentID, Post post, User sender, User receiver, LocalDate time, int score, String content) {
         this.commentID = commentID;
-        this.postID = postID;
-        this.senderID = senderID;
-        this.ReceiverID = ReceiverID;
+        this.post = post;
+        this.sender = sender;
+        this.receiver = receiver;
         this.time = time;
         this.score = score;
         this.content = content;
@@ -32,6 +33,7 @@ public class Comment {
 
     public Comment() {
     }
+
 
     public int getCommentID() {
         return commentID;
@@ -41,29 +43,6 @@ public class Comment {
         this.commentID = commentID;
     }
 
-    public int getPostID() {
-        return postID;
-    }
-
-    public void setPostID(int postID) {
-        this.postID = postID;
-    }
-
-    public int getSenderID() {
-        return senderID;
-    }
-
-    public void setSenderID(int senderID) {
-        this.senderID = senderID;
-    }
-
-    public int getReceiverID() {
-        return ReceiverID;
-    }
-
-    public void setReceiverID(int ReceiverID) {
-        this.ReceiverID = ReceiverID;
-    }
 
     public LocalDate getTime() {
         return time;
@@ -89,12 +68,35 @@ public class Comment {
         this.content = content;
     }
 
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
+    public User getSender() {
+        return sender;
+    }
+
+    public void setSender(User sender) {
+        this.sender = sender;
+    }
+
+    public User getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(User receiver) {
+        this.receiver = receiver;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
+        int hash = 7;
         hash = 53 * hash + this.commentID;
-        hash = 53 * hash + this.postID;
-        hash = 53 * hash + this.senderID;
+        hash = 53 * hash + Objects.hashCode(this.sender);
         return hash;
     }
 
@@ -113,10 +115,7 @@ public class Comment {
         if (this.commentID != other.commentID) {
             return false;
         }
-        if (this.postID != other.postID) {
-            return false;
-        }
-        if (this.senderID != other.senderID) {
+        if (!Objects.equals(this.sender, other.sender)) {
             return false;
         }
         return true;
@@ -124,8 +123,12 @@ public class Comment {
 
     @Override
     public String toString() {
-        return "Comment{" + "commentID=" + commentID + ", postID=" + postID + ", senderID=" + senderID + ", ReceiverID=" + ReceiverID + ", time=" + time + ", score=" + score + ", content=" + content + '}';
+        return "Comment{" + "commentID=" + commentID + ", post=" + post + ", sender=" + sender + ", receiver=" + receiver + ", time=" + time + ", score=" + score + ", content=" + content + '}';
     }
+
+    
+    
+    
     
     
     

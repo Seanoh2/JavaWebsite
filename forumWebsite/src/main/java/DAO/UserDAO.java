@@ -47,10 +47,11 @@ public class UserDAO extends DAO implements UserDAOInterface {
         try {
             conn = getConnection();
 
-            String query = "SELECTx * FROM users WHERE firstName = ? AND lastName = ?";
+            String query = "SELECT * FROM users WHERE firstName = ? AND lastName = ?";
             ps = conn.prepareStatement(query);
             ps.setString(1, firstName);
             ps.setString(2, lastName);
+            rs = ps.executeQuery();
 
             while (rs.next()) {
                 u = new User();
@@ -106,6 +107,7 @@ public class UserDAO extends DAO implements UserDAOInterface {
             ps = conn.prepareStatement(query);
             ps.setString(1, "%" + name + "%");
             ps.setString(2, "%" + name + "%");
+            rs = ps.executeQuery();
 
             while (rs.next()) {
                 u = new User();
@@ -261,17 +263,15 @@ public class UserDAO extends DAO implements UserDAOInterface {
         PreparedStatement ps = null;
         ResultSet rs = null;
         User u = null;
-        try 
-        {
+        try {
             con = this.getConnection();
-            
+
             String query = "SELECT * FROM users WHERE Email = ?";
             ps = con.prepareStatement(query);
-            ps.setString(1, email);        
+            ps.setString(1, email);
             rs = ps.executeQuery();
-            
-            if (rs.next() && Password.checkPassword(password, rs.getString("Password")))
-            {
+
+            if (rs.next() && Password.checkPassword(password, rs.getString("Password"))) {
                 u = new User();
                 u.setUserID(rs.getInt("UserID"));
                 u.setEmail(rs.getString("Email"));
@@ -280,31 +280,21 @@ public class UserDAO extends DAO implements UserDAOInterface {
                 u.setLastName(rs.getString("LastName"));
                 u.setIsAdmin(rs.getBoolean("isAdmin"));
             }
-        } 
-        catch (SQLException e) 
-        {
+        } catch (SQLException e) {
             System.err.println("\tA problem occurred during the login method:");
-            System.err.println("\t"+e.getMessage());
-        } 
-        finally 
-        {
-            try 
-            {
-                if (rs != null) 
-                {
+            System.err.println("\t" + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
                     rs.close();
                 }
-                if (ps != null) 
-                {
+                if (ps != null) {
                     ps.close();
                 }
-                if (con != null) 
-                {
+                if (con != null) {
                     freeConnection(con);
                 }
-            } 
-            catch (SQLException e) 
-            {
+            } catch (SQLException e) {
                 System.err.println("A problem occurred when closing down the login method:\n" + e.getMessage());
             }
         }
