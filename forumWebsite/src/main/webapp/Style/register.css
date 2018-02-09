@@ -1,0 +1,42 @@
+.txtField{
+    background-color: rgba(255, 0, 0, 0);
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+    margin-top: 30px;
+    margin-left: 100px;
+    height:40px;
+    width:200px;
+    color:white;
+}
+
+#container{
+    width:400px;
+    height:400px;
+    border-style:solid;
+    border-color:white;
+    border-width:1px;
+    position: absolute;
+    margin-left: 470px;
+    margin-top:200px;
+}
+
+#register{
+    background-color: rgba(255, 0, 0, 0);
+    border: solid;
+    border-color: white;
+    border-width:2px;
+    color: white;
+    font-size: 10px;
+    height: 40px;
+    width: 100px;
+    transition: all 0.5s;
+    position: absolute;
+    margin-left: -160px;
+    margin-top: 100px;
+}
+
+.submitButton{
+    margin-left:150px;
+    margin-top:30px;
+}

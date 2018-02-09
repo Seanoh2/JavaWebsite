@@ -25,7 +25,7 @@
 
         <footer>
             <br><br>
-            <a href="index.html">Login</a>
+            <a href="login.html">Login</a>
             <br>
             <a href="register.jsp">Register</a>
             <br>

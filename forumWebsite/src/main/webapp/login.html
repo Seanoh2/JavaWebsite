@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Login</title>
+        
+        <link rel="stylesheet" type="text/css" href="Style/login.css">
+        <link rel="stylesheet" type="text/css" href="Style/siteWide.css">
+
+    </head>
+    <body>
+        <form action="FrontController" method="post" id="loginForm">
+            <input type="hidden" value="login" name="action">
+            <input type="text" name="email" id="txtEmail" placeholder="email address">
+            <br>
+            <input type="password" name="password" id="txtPassword" placeholder="password">
+            <br><br>
+            <input type="submit" value="Login" class="submitButton">
+        </form>
+        
+    </body>
+</html>

@@ -10,32 +10,24 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Register</title>
+        
+        <link rel="stylesheet" type="text/css" href="Style/register.css">
+        <link rel="stylesheet" type="text/css" href="Style/siteWide.css">
+        
     </head>
     <body>
-        <h1>Register</h1>
-        <form action="FrontController" method="post">
+        <form action="FrontController" method="post" id="container">
             <input type="hidden" value="register" name="action">
-            Email:
-            <input type="text" name="email">
+            <input type="text" name="email" placeholder="email" class="txtField">
             <br>
-            Password:
-            <input type="text" name="password">
+            <input type="text" name="password" placeholder="password" class="txtField">
             <br>
-            first Name:
-            <input type="text" name="firstName">
+            <input type="text" name="firstName" placeholder="first name" class="txtField">
             <br>
-            last Name:
-            <input type="text" name="lastName">
+            <input type="text" name="lastName" placeholder="last name" class="txtField">
             <br><br>
-            <input type="submit" value="Register">
+            <input type="submit" value="Register" class="submitButton">
         </form>
-
-        <footer>
-            <br><br>
-            <a href="index.html">Login</a>
-            <br>
-            <a href="register.jsp">Register</a>
-            <br>
-        </footer>
+        
     </body>
 </html>

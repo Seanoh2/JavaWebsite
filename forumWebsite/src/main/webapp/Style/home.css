@@ -1,0 +1,41 @@
+#container{
+    width: 400px;
+    height: 300px;
+    border-style: groove;
+    border-width: 1px;
+    border-color: white;
+    margin-left: 450px;
+    margin-top:150px;
+    position: absolute;
+
+}
+
+#login{
+    background-color: rgba(255, 0, 0, 0);
+    border: solid;
+    border-color: white;
+    border-width:2px;
+    color: white;
+    font-size: 20px;
+    height: 40px;
+    width: 200px;
+    transition: all 0.5s;
+    position: absolute;
+    margin-left: 100px;
+    margin-top: 100px;
+}
+
+#register{
+    background-color: rgba(255, 0, 0, 0);
+    border: solid;
+    border-color: white;
+    border-width:2px;
+    color: white;
+    font-size: 20px;
+    height: 40px;
+    width: 200px;
+    transition: all 0.5s;
+    position: absolute;
+    margin-left: 100px;
+    margin-top: 150px;
+}
