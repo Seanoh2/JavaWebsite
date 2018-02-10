@@ -1,0 +1,70 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10-Feb-2018, 14:35:53
+    Author     : tomwa
+*/
+
+#container{
+    border-style:solid;
+    border-width: 1px;
+    border-color:white;
+    margin-left:70px;
+    margin-top:150px;
+    height:500px;
+    width:1200px;
+}
+
+#games{
+    position: absolute;
+    border-style:solid;
+    border-width:1px;
+    border-color:white;
+    width:200px;
+    height:200px;
+    margin-left:100px;
+    margin-top:100px;
+}
+
+#tech{
+    position:absolute;
+    border-style:solid;
+    border-width:1px;
+    border-color:white;
+    width:200px;
+    height:200px;
+    margin-left:250px;   
+}
+
+#movies{
+    position:absolute;
+    border-style:solid;
+    border-width:1px;
+    border-color:white;
+    width:200px;
+    height:200px;
+    margin-left:250px;   
+}
+
+#music{
+    position:absolute;
+    border-style:solid;
+    border-width:1px;
+    border-color:white;
+    width:200px;
+    height:200px;
+    margin-left:250px;   
+}
+
+#sports{
+    position:absolute;
+    border-style:solid;
+    border-width:1px;
+    border-color:white;
+    width:200px;
+    height:200px;
+    margin-left:250px;   
+}

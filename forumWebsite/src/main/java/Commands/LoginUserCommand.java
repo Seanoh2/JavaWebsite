@@ -41,7 +41,7 @@ public class LoginUserCommand implements Command {
             User u = userDao.login(email, password);
             if (u != null) {
                 session.setAttribute("user", u);
-                forwardToJsp = "home.jsp";
+                forwardToJsp = "profile.jsp";
             } else {
                 String errorMessage = "Invalid credentials.";
                 session.setAttribute("errorMessage", errorMessage);
