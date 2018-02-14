@@ -12,11 +12,14 @@
 
         <link rel="stylesheet" type="text/css" href="Style/home.css">
         <link rel="stylesheet" type="text/css" href="Style/siteWide.css">
+        <link rel=stylesheet" type="text/css" href="Style/header.css">
+        
+         <%@include  file="header.html" %>
 
     </head>
     <body>
         <div id="container">
-            <button class="button" id="login" onclick="window.location.href = 'login.html'"><span> Login </span></button>
+            <button class="button" id="login" onclick="window.location.href = 'login.jsp'"><span> Login </span></button>
             <button class="button" id="register" onclick="window.location.href = 'register.jsp'"><span> Register </span></button>
         </div>
     </body>

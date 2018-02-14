@@ -15,6 +15,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Error</title>
+        
+        <link rel="stylesheet" type="text/css" href="Style/siteWide.css"
+        <link rel=stylesheet" type="text/css" href="Style/header.css">
+        
+         <%@include  file="header.html" %>
     </head>
     <body>
         <h1><%=session.getAttribute("errorMessage")%></h1>

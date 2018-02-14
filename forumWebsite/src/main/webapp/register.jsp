@@ -13,6 +13,9 @@
         
         <link rel="stylesheet" type="text/css" href="Style/register.css">
         <link rel="stylesheet" type="text/css" href="Style/siteWide.css">
+        <link rel=stylesheet" type="text/css" href="Style/header.css">
+        
+         <%@include  file="header.html" %>
         
     </head>
     <body>

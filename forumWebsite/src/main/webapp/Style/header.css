@@ -1,0 +1,86 @@
+body{
+    background-color:#222222;
+    font-family: monospace;
+    margin:0;
+}
+
+#header{
+    position: absolute;
+    width:100%;
+    height:17%;
+    position:absolute;
+    background-color: #333131;
+    margin:0;
+}
+
+#searchArea{
+    position: absolute;
+    width:400px;
+    color:white;
+    margin:0;
+}
+
+a{
+    text-decoration: none;
+    color:white;
+    font-family:monospace;
+    margin-left:20px;
+    -moz-transition:0.5s;
+    font-size: 12px;
+}
+
+#btnSearch{
+    position: absolute;
+    background-color: white;
+    color:black;
+    width:70px;
+    height:25px;
+    margin-left: 720px;
+    margin-top:20px;
+    border-radius: 15px;
+}
+
+#searchbar{
+    position: absolute;
+    background-color:white;
+    color:black;
+    height:40px;
+    width:500px;
+    margin-left: 200px;
+    margin-top:10px;
+    border-radius:15px;
+}
+
+#linkContainer{
+    margin-top:65px;
+    margin-left:250px;
+
+}
+
+a:hover{
+    -moz-transition:0.5s;
+    color:red;
+}
+
+#misc{
+    position: absolute;
+    margin-left:1200px;
+    margin-top:-60px;
+}
+
+#logoArea{
+    border-style: solid;
+    border-color:white;
+    border-width:1px;
+    width:80px;
+    height:80px;
+    position: absolute;
+    margin-left:60px;
+    margin-top:10px;
+}
+
+#aboutUs{
+    position: absolute;
+    margin-left:830px;
+    margin-top:-40px;
+}

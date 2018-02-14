@@ -1,3 +1,10 @@
+<%-- 
+    Document   : login
+    Created on : 14-Feb-2018, 20:29:53
+    Author     : tomwarren
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,6 +13,9 @@
         
         <link rel="stylesheet" type="text/css" href="Style/login.css">
         <link rel="stylesheet" type="text/css" href="Style/siteWide.css">
+        <link rel=stylesheet" type="text/css" href="Style/header.css">
+        
+         <%@include  file="header.html" %>
 
     </head>
     <body>

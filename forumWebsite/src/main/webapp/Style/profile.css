@@ -8,9 +8,66 @@ and open the template in the editor.
     Author     : tomwa
 */
 
-#container{
+#info{
+    position:absolute;
     font-family: monospace;
     border-style:solid;
     border-width:1px;
     border-color:white;
+    margin-top:300px;
+    margin-left:20px;
+    width:400px;
+    
+}
+
+.change{
+    background-color: rgba(0,0,0,0);
+    border-style: solid;
+    border-color:white;
+    color:white;
+    -moz-transition:0.5s;
+    position:absolute;
+}
+
+.change:hover{
+    -moz-transition:0.5s;
+    color:red;
+    border-color:red;
+}
+
+#btnEmail{
+    margin-left:250px;
+    margin-top:-30px;
+}
+
+#btnFirstName{
+    margin-left:250px;
+    margin-top:-30px;
+}
+
+#btnLastName{
+     margin-left:250px;
+    margin-top:-30px;
+}
+
+#posts{
+    position: absolute;
+    border-style:solid;
+    border-color:white;
+    border-width:1px;
+    margin-top:300px;
+    margin-left:470px;
+    width:400px;
+    height:125px;
+}
+
+#comments{
+    position: absolute;
+    border-style:solid;
+    border-color:white;
+    border-width:1px;
+    margin-top:300px;
+    margin-left:920px;
+    width:400px;
+    height:125px;
 }

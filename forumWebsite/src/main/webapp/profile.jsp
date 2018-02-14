@@ -15,6 +15,9 @@
         
         <link rel="stylesheet" type="text/css" href="Style/profile.css">
         <link rel="stylesheet" type="text/css" href="Style/siteWide.css">
+        <link rel=stylesheet" type="text/css" href="Style/header.css">
+        
+         <%@include  file="header.html" %>
         
     </head>
     
@@ -26,11 +29,26 @@
             User loggedIn = userdao.getUserByEmail(u1.getEmail());
         %>
         
-        <div id="container">
+        <div id="info">
             <p> email address: <%=u1.getEmail()%> </p>
+            <input type="button" value="change" class="change" id="btnEmail"/>
             <p> first name: <%=loggedIn.getFirstName()%> </p>
+            <input type="button" value="change" class="change" id="btnFirstName"/>
             <p> last name: <%=loggedIn.getLastName()%> </p>
+            <input type="button" value="change" class="change" id="btnLastName"/>
             <p> user identification number: <%=loggedIn.getUserID()%> </p>
+        </div>
+        
+        <div id="posts">
+            
+            <p> Posts made by user will be displayed here </p>
+            
+        </div>
+        
+        <div id="comments">
+            
+            <p> Comments made by user will be displayed here </p>
+            
         </div>
         
     </body>
