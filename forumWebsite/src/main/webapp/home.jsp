@@ -3,14 +3,6 @@
     Created on : 09-Feb-2018, 21:52:12
     Author     : Sean
 --%>
-
-<%@page import="DTOS.Forum"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="DAO.ForumDAO"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%  ForumDAO forumDAO = new ForumDAO("forumDatabase");
-    ArrayList<Forum> forums = forumDAO.getAllForums();
-%>
 <!DOCTYPE html>
 <html>
     <head>

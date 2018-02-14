@@ -27,10 +27,10 @@
         %>
         
         <div id="container">
-            <p> email address: <% out.println(u1.getEmail());%> </p>
-            <p> first name: <% out.println(loggedIn.getFirstName()); %> </p>
-            <p> last name: <% out.println(loggedIn.getLastName()); %> </p>
-            <p> user identification number: <% out.println(loggedIn.getUserID()); %> </p>
+            <p> email address: <%=u1.getEmail()%> </p>
+            <p> first name: <%=loggedIn.getFirstName()%> </p>
+            <p> last name: <%=loggedIn.getLastName()%> </p>
+            <p> user identification number: <%=loggedIn.getUserID()%> </p>
         </div>
         
     </body>
