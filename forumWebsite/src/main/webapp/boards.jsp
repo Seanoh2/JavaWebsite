@@ -33,11 +33,14 @@
             <% for (Forum forum : forums) {%>
             <div id="<%=forum.getTitle()%>">
                 <% for (Post filter : posts) {
-                        if (filter.getForumID() == forum.getForumID()) {  %>
-
-
+                        if (filter.getForumID() == forum.getForumID()) {  
+                            if(filter.isIsLink()) { %>
+                            <a href="<%=filter.getContent()%>"><%=filter.getTitle()%></a>
+                          <% } else { %>
+                                
                 <% }
-                    } %>
+                     }
+                        } %>
             </div>
             <% }%>
         </div>

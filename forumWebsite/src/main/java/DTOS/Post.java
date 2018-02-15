@@ -12,7 +12,7 @@ package DTOS;
 public class Post implements Comparable<Post> {
 
     private int postID;
-    private int poster;
+    private User poster;
     private int forumID;
     private boolean isLink;
     private String title;
@@ -30,9 +30,9 @@ public class Post implements Comparable<Post> {
      * @param content
      * @param score
      */
-    public Post(int postID, int userID, int forumID, boolean isLink, String title, String content, int score) {
+    public Post(int postID, User poster, int forumID, boolean isLink, String title, String content, int score) {
         this.postID = postID;
-        this.poster = userID;
+        this.poster = poster;
         this.forumID = forumID;
         this.isLink = isLink;
         this.title = title;
@@ -66,7 +66,7 @@ public class Post implements Comparable<Post> {
      *
      * @return
      */
-    public int getPoster() {
+    public User getPoster() {
         return poster;
     }
 
@@ -74,7 +74,7 @@ public class Post implements Comparable<Post> {
      *
      * @param poster
      */
-    public void poser(int poster) {
+    public void poser(User poster) {
         this.poster = poster;
     }
 
@@ -160,7 +160,7 @@ public class Post implements Comparable<Post> {
 
     @Override
     public String toString() {
-        return "Post{" + "postID=" + postID + ", poster=" + poster + ", forumID=" + forumID + ", isLink=" + isLink + ", title=" + title + ", content=" + content + ", score=" + score + '}';
+        return "Post{" + "postID=" + postID + ", poster=" + poster.getUserID() + ", forumID=" + forumID + ", isLink=" + isLink + ", title=" + title + ", content=" + content + ", score=" + score + '}';
     }
 
     @Override
