@@ -32,10 +32,7 @@ public class PostDAO extends DAO {
 
         try {
             conn = getConnection();
-
-            String query = "SELECT users.UserID, users.FirstName, users.LastName, users.Email, users.isAdmin,"
-                    + " PostID, ForumID, IsLink, Title, Content, Score FROM posts"
-                    + "INNER JOIN users ON posts.UserID = users.UserID;";
+            String query = "SELECT users.UserID, users.FirstName, users.LastName, users.Email, users.isAdmin, PostID, ForumID, IsLink, Title, Content, Score FROM posts INNER JOIN users ON posts.UserID = users.UserID;";
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
 
@@ -56,6 +53,7 @@ public class PostDAO extends DAO {
                         rs.getString("Content"),
                         rs.getInt("Score")
                 );
+                postList.add(p);
             }
         } catch (SQLException e) {
             System.out.println("Exception occured in the getAllPosts() method: " + e.getMessage());
@@ -87,9 +85,9 @@ public class PostDAO extends DAO {
             conn = getConnection();
 
             String query = "SELECT users.UserID, users.FirstName, users.LastName, users.Email, users.isAdmin,"
-                    + " PostID, ForumID, IsLink, Title, Content, Score FROM posts"
-                    + " INNER JOIN users ON posts.UserID = users.UserID"
-                    + " WHERE ForumID = ?";
+                    + " PostID, ForumID, IsLink, Title, Content, Score FROM posts "
+                    + " INNER JOIN users ON posts.UserID = users.UserID "
+                    + " WHERE ForumID = ? ";
             ps = conn.prepareStatement(query);
             ps.setInt(1, forumID);
             rs = ps.executeQuery();

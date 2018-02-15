@@ -1,17 +1,11 @@
-<%-- 
-    Document   : boards
-    Created on : 10-Feb-2018, 14:34:34
-    Author     : tomwa
---%>
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="DTOS.Post"%>
 <%@page import="DAO.PostDAO"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="DTOS.Forum"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="DAO.ForumDAO"%>
-<%  ForumDAO forumDAO = new ForumDAO("forumDatabase");
-    PostDAO postDAO = new PostDAO("forumDatabase");
+<%  ForumDAO forumDAO = new ForumDAO("forumdatabase");
+    PostDAO postDAO = new PostDAO("forumdatabase");
     ArrayList<Forum> forums = forumDAO.getAllForums();
     ArrayList<Post> posts = postDAO.getAllPosts();
 %>
@@ -31,11 +25,12 @@
 
         <div id="container">            
             <% for (Forum forum : forums) {%>
-            <div id="<%=forum.getTitle()%>">
+            <div class="divide" id="<%=forum.getTitle()%>">
                 <% for (Post filter : posts) {
                         if (filter.getForumID() == forum.getForumID()) {  
                             if(filter.isIsLink()) { %>
                             <a href="<%=filter.getContent()%>"><%=filter.getTitle()%></a>
+                            <br/>
                           <% } else { %>
                                 
                 <% }

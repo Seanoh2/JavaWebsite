@@ -25,18 +25,16 @@
         
         <%
             User u1 = (User) session.getAttribute("user");
-            UserDAO userdao = new UserDAO("forumdatabase");
-            User loggedIn = userdao.getUserByEmail(u1.getEmail());
         %>
         
         <div id="info">
             <p> email address: <%=u1.getEmail()%> </p>
             <input type="button" value="change" class="change" id="btnEmail"/>
-            <p> first name: <%=loggedIn.getFirstName()%> </p>
+            <p> first name: <%=u1.getFirstName()%> </p>
             <input type="button" value="change" class="change" id="btnFirstName"/>
-            <p> last name: <%=loggedIn.getLastName()%> </p>
+            <p> last name: <%=u1.getLastName()%> </p>
             <input type="button" value="change" class="change" id="btnLastName"/>
-            <p> user identification number: <%=loggedIn.getUserID()%> </p>
+            <p> user identification number: <%=u1.getUserID()%> </p>
         </div>
         
         <div id="posts">

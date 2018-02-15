@@ -9,62 +9,39 @@ and open the template in the editor.
 */
 
 #container{
+    position:absolute;
     border-style:solid;
     border-width: 1px;
     border-color:white;
     margin-left:70px;
-    margin-top:150px;
+    margin-top:200px;
     height:500px;
-    width:1200px;
+    width:1300px;
 }
 
-#games{
-    position: absolute;
-    border-style:solid;
-    border-width:1px;
-    border-color:white;
+.divide{
     width:200px;
     height:200px;
-    margin-left:100px;
-    margin-top:100px;
+    border-style:solid;
+    border-color:white;
+    border-width:1px;
+    margin-top:150px;
+    margin-left: 50px;
+    position:absolute;
 }
 
 #tech{
-    position:absolute;
-    border-style:solid;
-    border-width:1px;
-    border-color:white;
-    width:200px;
-    height:200px;
-    margin-left:250px;   
+    margin-left: 300px;
 }
 
 #movies{
-    position:absolute;
-    border-style:solid;
-    border-width:1px;
-    border-color:white;
-    width:200px;
-    height:200px;
-    margin-left:250px;   
+    margin-left:550px;
 }
 
 #music{
-    position:absolute;
-    border-style:solid;
-    border-width:1px;
-    border-color:white;
-    width:200px;
-    height:200px;
-    margin-left:250px;   
+    margin-left:800px;
 }
 
 #sports{
-    position:absolute;
-    border-style:solid;
-    border-width:1px;
-    border-color:white;
-    width:200px;
-    height:200px;
-    margin-left:250px;   
+    margin-left:1050px;
 }
