@@ -5,7 +5,7 @@
  */
 package DTOS;
 
-import java.time.LocalDate;
+import java.sql.Date;
 import java.util.Objects;
 
 /**
@@ -17,11 +17,11 @@ public class Comment {
     private Post post;
     private User sender;
     private User receiver;
-    private LocalDate time;
+    private Date time;
     private int score;
     private String content;
 
-    public Comment(int commentID, Post post, User sender, User receiver, LocalDate time, int score, String content) {
+    public Comment(int commentID, Post post, User sender, User receiver, Date time, int score, String content) {
         this.commentID = commentID;
         this.post = post;
         this.sender = sender;
@@ -44,11 +44,11 @@ public class Comment {
     }
 
 
-    public LocalDate getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(LocalDate time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 

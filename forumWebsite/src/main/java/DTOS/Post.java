@@ -23,7 +23,7 @@ public class Post implements Comparable<Post> {
      * Fully constructed Post object Main constructor.
      *
      * @param postID
-     * @param userID
+     * @param poster
      * @param forumID
      * @param isLink
      * @param title

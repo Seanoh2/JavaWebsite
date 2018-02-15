@@ -109,6 +109,7 @@ public class PostDAO extends DAO {
                         rs.getString("Content"),
                         rs.getInt("Score")
                 );
+                postList.add(p);
             }
         } catch (SQLException e) {
             System.out.println("Exception occured in the getPostsByForum() method: " + e.getMessage());
