@@ -1,9 +1,8 @@
 #container{
     width: 400px;
     height: 300px;
-    border-style: groove;
-    border-width: 1px;
-    border-color: white;
+    background-color:#1f1f21;
+    box-shadow: 5px 10px #1a1b1c;
     margin-left: 450px;
     margin-top:150px;
     position: absolute;

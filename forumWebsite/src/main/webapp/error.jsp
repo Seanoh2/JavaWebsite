@@ -16,19 +16,22 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Error</title>
         
-        <link rel="stylesheet" type="text/css" href="Style/siteWide.css"
-        <link rel=stylesheet" type="text/css" href="Style/header.css">
+        <link rel="stylesheet" type="text/css" href="Style/siteWide.css">
+        <link rel="stylesheet" type="text/css" href="Style/error.css">
         
-         <%@include  file="header.html" %>
+       <%@include  file="header.html" %>
     </head>
     <body>
-        <h1><%=session.getAttribute("errorMessage")%></h1>
-        <%session.removeAttribute("errorMessage");%>
+        <div  id="errorContainer">
+            <h1><%=session.getAttribute("errorMessage")%></h1>
+            <%session.removeAttribute("errorMessage");%>
+        
 
+            <button class="backButton" id="goBack" onclick="goBack()"><span> go back </span></button>
+        
+        </div>
 
-        <button onclick="goBack()">Go Back</button>
-
-        <footer>
+        <footer id="footer">
             <br><br>
             <a href="login.html">Login</a>
             <br>

@@ -34,6 +34,49 @@ body{
   right: 0;
 }
 
+.backButton{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    border-color:white;
+    border-style:solid;
+    border-width:1px;
+    width:100px;
+    height:40px;
+    font-family: monospace;
+    color:white;
+    background-color: rgba(0,0,0,0);
+}
+
+.backButton span{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+
+
+.backButton span:after {
+    content: '\226A';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.backButton:hover span {
+    padding-right: 25px;
+}
+
+.backButton:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
 .submitButton{
 
     color:white;
