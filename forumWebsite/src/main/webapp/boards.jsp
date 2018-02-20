@@ -25,7 +25,7 @@
 
         <div id="container">            
             <% for (Forum forum : forums) {%>
-            <div class="divide" id="<%=forum.getTitle()%>">
+            <div class="divide" id="<%=forum.getTitle()%>Board">
                 <% for (Post filter : posts) {
                         if (filter.getForumID() == forum.getForumID()) {  
                             if(filter.isIsLink()) { %>

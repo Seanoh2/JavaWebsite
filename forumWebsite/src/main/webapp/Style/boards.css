@@ -15,8 +15,8 @@ and open the template in the editor.
     border-color:white;
     margin-left:70px;
     margin-top:200px;
-    height:500px;
-    width:1300px;
+    height:400px;
+    width:1200px;
 }
 
 .divide{
@@ -30,18 +30,18 @@ and open the template in the editor.
     position:absolute;
 }
 
-#tech{
+#techBoard{
     margin-left: 300px;
 }
 
-#movies{
+#moviesBoard{
     margin-left:550px;
 }
 
-#music{
+#musicBoard{
     margin-left:800px;
 }
 
-#sports{
+#sportsBoard{
     margin-left:1050px;
 }

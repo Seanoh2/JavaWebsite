@@ -131,4 +131,61 @@ public class PostDAO extends DAO {
         return postList;   
     }
     
+    public ArrayList<Post> getPostsByUserID(int userID) {
+     Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Post p = null;
+        ArrayList<Post> postList = new ArrayList();
+
+        try {
+            conn = getConnection();
+
+            String query = "SELECT users.UserID, users.FirstName, users.LastName, users.Email, users.isAdmin,"
+                    + " PostID, ForumID, IsLink, Title, Content, Score FROM posts "
+                    + " INNER JOIN users ON posts.UserID = users.UserID "
+                    + " WHERE posts.UserID = ? ";
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, userID);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                p = new Post(
+                        rs.getInt("PostID"),
+                        new User(
+                                rs.getInt("UserID"),
+                                rs.getString("FirstName"),
+                                rs.getString("LastName"),
+                                rs.getString("Email"),
+                                null,
+                                rs.getBoolean("isAdmin")
+                            ),
+                        rs.getInt("ForumID"),
+                        rs.getBoolean("IsLink"),
+                        rs.getString("Title"),
+                        rs.getString("Content"),
+                        rs.getInt("Score")
+                );
+                postList.add(p);
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception occured in the getPostsByUserID() method: " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    freeConnection(conn);
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception occured in the finally section of the getPostsByForum() method: " + e.getMessage());
+            }
+        }
+        return postList;   
+    }
+    
 }

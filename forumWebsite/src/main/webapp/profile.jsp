@@ -4,6 +4,9 @@
     Author     : tomwa
 --%>
 
+<%@page import="DTOS.Post"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="DAO.PostDAO"%>
 <%@page import="DAO.UserDAO"%>
 <%@page import="DTOS.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -37,9 +40,17 @@
             <p> user identification number: <%=u1.getUserID()%> </p>
         </div>
         
+        <% PostDAO postdao = new PostDAO("forumdatabase");
+           ArrayList<Post> posts = postdao.getPostsByUserID(u1.getUserID());
+        %>
+        
         <div id="posts">
             
-            <p> Posts made by user will be displayed here </p>
+            <% for (Post post : posts) { %>
+                <a class="comment" href="comments.jsp?<%=post.getPostID()%>"><%=post.getTitle()%></a>
+                <br>
+            <% } %>
+               
             
         </div>
         
