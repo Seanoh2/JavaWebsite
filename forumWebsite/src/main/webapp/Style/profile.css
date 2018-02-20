@@ -11,9 +11,8 @@ and open the template in the editor.
 #info{
     position:absolute;
     font-family: monospace;
-    border-style:solid;
-    border-width:1px;
-    border-color:white;
+    background-color:#1f1f21;
+    box-shadow: 5px 10px #1a1b1c;
     margin-top:300px;
     margin-left:20px;
     width:400px;
@@ -52,9 +51,8 @@ and open the template in the editor.
 
 #posts{
     position: absolute;
-    border-style:solid;
-    border-color:white;
-    border-width:1px;
+    background-color:#1f1f21;
+    box-shadow: 5px 10px #1a1b1c;
     margin-top:300px;
     margin-left:470px;
     width:400px;
@@ -63,9 +61,8 @@ and open the template in the editor.
 
 #comments{
     position: absolute;
-    border-style:solid;
-    border-color:white;
-    border-width:1px;
+    background-color:#1f1f21;
+    box-shadow: 5px 10px #1a1b1c;
     margin-top:300px;
     margin-left:920px;
     width:400px;
@@ -73,5 +70,5 @@ and open the template in the editor.
 }
 
 .comment{
-    margin-top:100px;
+    
 }

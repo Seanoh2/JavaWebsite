@@ -4,6 +4,7 @@
     Author     : Seanoh
 --%>
 
+<%@page import="DAO.PostDAO"%>
 <%@page import="DAO.CommentDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,7 +17,9 @@
         
         <%@include  file="header.html" %>
         
-        <title><%CommentDAO commentDao = new CommentDAO("forumdatabase");%></title>
+        <%PostDAO postdao = new PostDAO("forumdatabase");%>
+        
+        <title></title>
     </head>
     <body>
     </body>
