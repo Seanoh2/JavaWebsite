@@ -4,6 +4,9 @@
     Author     : tomwa
 --%>
 
+<%@page import="DTOS.Post"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="DAO.PostDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,11 +16,31 @@
         
         <link rel="stylesheet" type="text/css" href="../Style/games.css">
         <link rel="stylesheet" type="text/css" href="../Style/siteWide.css">
-        <link rel=stylesheet" type="text/css" href="../Style/header.css">
+
         
          <%@include  file="/header.html" %>
     </head>
     <body>
-        <h1>Games</h1>
+        
+        <div id="spacing"/>
+        
+        <% 
+            PostDAO postdao = new PostDAO("forumdatabase");
+            ArrayList <Post> posts = postdao.getPostsByForum(1);
+        
+            for (Post post : posts) {
+         %>     
+                <div class="postContainer">
+                    <a class="title" href="../comments.jsp?<%=post.getPostID()%>"><%=post.getTitle()%></a>
+                    <p class="content"> <%=post.getContent()%> </p>
+                    <a href="../profile.jsp?<%=post.getPoster().getUserID()%>" class="op"> <%=post.getPoster().getFirstName() + " " + post.getPoster().getLastName()%> <a/>
+                    <p class="score"> <%=post.getScore()%> </p>
+                    <div id="rating">
+                        <button type="button" class="plus"> &#x2b; </button>
+                        <button type="button" class="minus"> &#8722; </button>
+                    </div>
+                </div>
+           <% } %>
+        
     </body>
 </html>

@@ -16,7 +16,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Profile</title>
         
-        <link rel="stylesheet" type="text/css" href="Style/profile.css">
+        <link rel="stylesheet" type="text/css" href="Style/myProfile.css">
         <link rel="stylesheet" type="text/css" href="Style/siteWide.css">
         <link rel=stylesheet" type="text/css" href="Style/header.css">
         
