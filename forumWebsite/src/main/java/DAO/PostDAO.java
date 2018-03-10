@@ -188,4 +188,59 @@ public class PostDAO extends DAO {
         return postList;   
     }
     
+    public Post getPostByID(int postID) {
+         Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Post post = null;
+
+        try {
+            conn = getConnection();
+
+            String query = "SELECT users.UserID, users.FirstName, users.LastName, users.Email, users.isAdmin,"
+                    + " PostID, ForumID, IsLink, Title, Content, Score FROM posts "
+                    + " INNER JOIN users ON posts.UserID = users.UserID "
+                    + " WHERE posts.postID = ? ";
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, postID);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                post = new Post(
+                        rs.getInt("PostID"),
+                        new User(
+                                rs.getInt("UserID"),
+                                rs.getString("FirstName"),
+                                rs.getString("LastName"),
+                                rs.getString("Email"),
+                                null,
+                                rs.getBoolean("isAdmin")
+                            ),
+                        rs.getInt("ForumID"),
+                        rs.getBoolean("IsLink"),
+                        rs.getString("Title"),
+                        rs.getString("Content"),
+                        rs.getInt("Score")
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception occured in the getPostByID() method: " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    freeConnection(conn);
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception occured in the finally section of the getPostByID() method: " + e.getMessage());
+            }
+        }
+        return post;
+    }
+    
 }

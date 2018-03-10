@@ -27,6 +27,6 @@
             <br><br>
             <input type="submit" value="Login" class="submitButton">
         </form>
-        
+        <a href="recoverPassword.jsp">Recover password</a>
     </body>
 </html>
