@@ -5,6 +5,7 @@
  */
 package DTOS;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -18,13 +19,13 @@ public class Message {
     private User sender;
     private User reciever;
     private int type;
-    private LocalDate time;
+    private Date time;
     private String content;
 
     public Message() {
     }
 
-    public Message(int messageID, User sender, User reciever, int type, LocalDate time, String content) {
+    public Message(int messageID, User sender, User reciever, int type, Date time, String content) {
         this.messageID = messageID;
         this.sender = sender;
         this.reciever = reciever;
@@ -65,11 +66,11 @@ public class Message {
         this.type = type;
     }
 
-    public LocalDate getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(LocalDate time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 

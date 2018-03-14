@@ -80,7 +80,7 @@ public class ForumDAO extends DAO implements ForumDAOInterface {
         try {
             conn = getConnection();
 
-            String query = "SELECT * FROM forums WHERE Title = *";
+            String query = "SELECT * FROM forums WHERE Title = ?";
             ps.setString(1, title);
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
@@ -127,7 +127,7 @@ public class ForumDAO extends DAO implements ForumDAOInterface {
         try {
             conn = getConnection();
 
-            String query = "SELECT * FROM forums WHERE ForumID = *";
+            String query = "SELECT * FROM forums WHERE ForumID = ?";
             ps = conn.prepareStatement(query);
             ps.setInt(1, ID);
             rs = ps.executeQuery();

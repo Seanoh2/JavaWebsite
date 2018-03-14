@@ -264,7 +264,7 @@ public class UserDAO extends DAO implements UserDAOInterface {
         ResultSet rs = null;
         User u = null;
         try {
-            con = this.getConnection();
+            con = getConnection();
 
             String query = "SELECT * FROM users WHERE Email = ?";
             ps = con.prepareStatement(query);

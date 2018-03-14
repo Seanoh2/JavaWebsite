@@ -4,6 +4,8 @@
     Author     : tomwa
 --%>
 
+<%@page import="DTOS.Message"%>
+<%@page import="DAO.MessageDAO"%>
 <%@page import="DTOS.Comment"%>
 <%@page import="DAO.CommentDAO"%>
 <%@page import="DTOS.Post"%>
@@ -17,21 +19,21 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Profile</title>
-        
+
         <link rel="stylesheet" type="text/css" href="Style/myProfile.css">
         <link rel="stylesheet" type="text/css" href="Style/siteWide.css">
         <link rel=stylesheet" type="text/css" href="Style/header.css">
-        
-         <%@include  file="header.html" %>
-        
+
+        <%@include  file="header.html" %>
+
     </head>
-    
+
     <body>
-        
+
         <%
             User u1 = (User) session.getAttribute("user");
         %>
-        
+
         <div id="info">
             <p> email address: <%=u1.getEmail()%> </p>
             <input type="button" value="change" class="change" id="btnEmail"/>
@@ -41,34 +43,32 @@
             <input type="button" value="change" class="change" id="btnLastName"/>
             <p> user identification number: <%=u1.getUserID()%> </p>
         </div>
-        
+
         <% PostDAO postdao = new PostDAO("forumdatabase");
-           ArrayList<Post> posts = postdao.getPostsByUserID(u1.getUserID());
+            ArrayList<Post> posts = postdao.getPostsByUserID(u1.getUserID());
         %>
-        
+
         <div id="posts">
-            
-            <% for (Post post : posts) { %>
-                <a class="comment" href="comments.jsp?<%=post.getPostID()%>"><%=post.getTitle()%></a>
-                <br>
-                <br>
+
+            <% for (Post post : posts) {%>
+            <a class="comment" href="comments.jsp?<%=post.getPostID()%>"><%=post.getTitle()%></a>
+            <br>
+            <br>
             <% } %>
-               
-            
+
+
         </div>
-        
-        <div id="comments">
-            <% CommentDAO commentdao = new CommentDAO("forumwebsite");%>
-            <% ArrayList<Comment> comments = commentdao.getCommentsBySenderID(u1.getUserID()); %>
-            
-            <% for(Comment comment : comments) { %>
-            <div class="comment">
-                <%=comment.getPost().getTitle()%>
-                <br/>
-                <%=comment.getContent()%>
-            </div>
-            <% } %>
+
+        <% MessageDAO messagedao = new MessageDAO("forumdatabase");
+            ArrayList<Message> messages = messagedao.getMessagesBySender(u1.getUserID());
+        %>
+
+        <div id="messages">
+            <% for (Message message : messages) {%>
+            <p><%=message.getReciever().getFirstName()%><p>
+            <p><%=message.getContent()%></p>
+            <% }%>
         </div>
-        
+
     </body>
 </html>

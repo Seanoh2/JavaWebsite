@@ -54,7 +54,11 @@ public class CommandFactory {
                  
                 case "resetpassword":
                     command = new ResetPasswordCommand();
-                    break; 
+                    break;
+                
+                case "sendMessage":
+                    command = new SendMessageCommand();
+                    break;
         
                 default:
                     command = new NoValidActionCommand();
