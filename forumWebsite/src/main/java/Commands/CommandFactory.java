@@ -47,6 +47,14 @@ public class CommandFactory {
                 case "register":
                     command = new SignUpUserCommand();
                     break;
+                    
+                case "passwordrecovery":
+                    command = new RequestPasswordCommand();
+                    break;
+                 
+                case "resetpassword":
+                    command = new ResetPasswordCommand();
+                    break; 
         
                 default:
                     command = new NoValidActionCommand();

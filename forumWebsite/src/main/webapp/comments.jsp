@@ -14,26 +14,38 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
+
         <link rel="stylesheet" type="text/css" href="Style/siteWide.css">
         <link rel=stylesheet" type="text/css" href="Style/header.css">
-        
+    </head>
+    <body>
         <%@include  file="header.html" %>
-        
+
         <%PostDAO postdao = new PostDAO("forumdatabase");%>
         <%Post currentPost = postdao.getPostByID(Integer.parseInt(request.getParameter("postID")));%>
         <%CommentDAO commentdao = new CommentDAO("forumdatabase");%>
         <%ArrayList<Comment> comments = commentdao.getCommentsByPostID(Integer.parseInt(request.getParameter("postID")));%>
-        
+
         <title><%=currentPost.getTitle()%></title>
-        
-        <% for(Comment comment : comments) { %>
-        <% if(comment.getReceiver() == )
-            <div class="comment">
-                
+
+        <div class="Content">
+            <% if (currentPost.isIsLink()) {%>
+            <iframe width="420" height="315"
+                    src="<%=currentPost.getContent()%>">
+            </iframe> 
+            <p><%=currentPost.getContent()%></p>
+        </div>
+
+        <% for (Comment comment : comments) { %>
+        <% if (comment.getReceiver() == null) { %>
+        <div class="comment">
+            <% } else { %>
+            <div class="response">
+                <% }%>
+                <a href="viewProfile.jsp?ID=<%=comment.getSender().getUserID()%>"><%=comment.getSender().getFirstName()%></a>
+                <br/>
+                <%=comment.getContent()%>
             </div>
-        <% } %>
-    </head>
-    <body>
+            <% }%>
     </body>
 </html>

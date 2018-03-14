@@ -4,6 +4,8 @@
     Author     : tomwa
 --%>
 
+<%@page import="DTOS.Comment"%>
+<%@page import="DAO.CommentDAO"%>
 <%@page import="DTOS.Post"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="DAO.PostDAO"%>
@@ -56,9 +58,16 @@
         </div>
         
         <div id="comments">
+            <% CommentDAO commentdao = new CommentDAO("forumwebsite");%>
+            <% ArrayList<Comment> comments = commentdao.getCommentsBySenderID(u1.getUserID()); %>
             
-            <p> Comments made by user will be displayed here </p>
-            
+            <% for(Comment comment : comments) { %>
+            <div class="comment">
+                <%=comment.getPost().getTitle()%>
+                <br/>
+                <%=comment.getContent()%>
+            </div>
+            <% } %>
         </div>
         
     </body>
