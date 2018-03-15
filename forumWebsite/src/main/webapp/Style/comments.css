@@ -36,7 +36,7 @@ body{
 
 .response{
     position:absolute;
-    margin-top:500px;
+    margin-top:450px;
     height:100px;
     margin-left:300px;
     font-size:20px;
@@ -45,4 +45,21 @@ body{
     border-color:white;
     border-width:1px;
     width:300px;
+}
+
+#postComment{
+    background-color: rgba(255, 0, 0, 0);
+    color:white;
+    border-color:white;
+    width:100px;
+    height:40px;
+    margin-left:100px;
+}
+
+#formPost{
+    width:300px;
+    height:50px;
+    position:absolute;
+    margin-top:600px;
+    margin-left:150px;
 }

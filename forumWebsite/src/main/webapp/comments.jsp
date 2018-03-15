@@ -57,9 +57,9 @@
             </div>
             <% }%>
             
-            <form action="sendComment.jsp" method="post">
+            <form action="sendComment.jsp" method="post" id="formPost">
                 <input type="hidden" value="<%=currentPost.getPostID()%>" name="postID">
-                <input type="submit" value="Post Comment">
+                <input type="submit" value="Post Comment" id="postComment">
             </form>
     </body>
 </html>
