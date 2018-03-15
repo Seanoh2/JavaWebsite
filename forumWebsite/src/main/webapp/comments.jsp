@@ -30,16 +30,22 @@
 
         <div class="Content">
             <% if (currentPost.isIsLink()) {%>
+            <% if (currentPost.getContent().contains("youtube.com") == true) { %>
             <iframe width="420" height="315"
                     src="<%=currentPost.getContent()%>">
             </iframe>
-            <% }else{%>
+            <% } else { %>
+            <a href="<%=currentPost.getContent()%>"><%=currentPost.getTitle()%></a>
+            <% } 
+            } else { 
+            %>
             <p><%=currentPost.getContent()%></p>
-            <%}%>
+            <% } %>
         </div>
 
-        <% for (Comment comment : comments) { %>
-        <% if (comment.getReceiver() == null) { %>
+        <% for (Comment comment : comments) {
+           if (comment.getReceiver() == null) { 
+         %>
         <div class="comment">
             <% } else { %>
             <div class="response">
