@@ -34,11 +34,11 @@ public class CommentDAO extends DAO {
         try {
             conn = getConnection();
             String query = "SELECT CommentID, posts.postID, posts.userID, posts.Title, posts.ForumID, sender.UserID, sender.FirstName,"
-                    + " receiver.UserID, receiver.FirstName, Time, Score, Content"
+                    + " receiver.UserID, receiver.FirstName, Time, comments.Score, comments.Content"
                     + " FROM comments"
-                    + " INNER JOIN users AS sender ON sender.UserID = SenderID"
-                    + " INNER JOIN users AS receiver ON receiver.UserID = ReceiverID"
-                    + " INNER JOIN posts AS posts ON posts.PostID = PostID"
+                    + " INNER JOIN users AS sender ON sender.UserID = comments.SenderID"
+                    + " INNER JOIN users AS receiver ON receiver.UserID = comments.ReceiverID"
+                    + " INNER JOIN posts AS posts ON posts.PostID = comments.PostID"
                     + " WHERE SenderID = ?";
             ps = conn.prepareStatement(query);
             ps.setInt(1, senderID);
@@ -115,11 +115,11 @@ public class CommentDAO extends DAO {
         try {
             conn = getConnection();
             String query = "SELECT CommentID, posts.postID, posts.userID, posts.Title, posts.ForumID, sender.UserID, sender.FirstName,"
-                    + " receiver.UserID, receiver.FirstName, Time, Score, Content"
+                    + " receiver.UserID, receiver.FirstName, Time, comments.Score, comments.Content"
                     + " FROM comments"
-                    + " INNER JOIN users AS sender ON sender.UserID = SenderID"
-                    + " INNER JOIN users AS receiver ON receiver.UserID = ReceiverID"
-                    + " INNER JOIN posts AS posts ON posts.PostID = PostID"
+                    + " INNER JOIN users AS sender ON sender.UserID = comments.SenderID"
+                    + " INNER JOIN users AS receiver ON receiver.UserID = comments.ReceiverID"
+                    + " INNER JOIN posts AS posts ON posts.PostID = comments.PostID"
                     + " WHERE ReceiverID = ?";
             ps = conn.prepareStatement(query);
             ps.setInt(1, receiverID);
@@ -196,11 +196,11 @@ Connection conn = null;
         try {
             conn = getConnection();
             String query = "SELECT CommentID, posts.postID, posts.userID, posts.Title, posts.ForumID, sender.UserID, sender.FirstName,"
-                    + " receiver.UserID, receiver.FirstName, Time, Score, Content"
+                    + " receiver.UserID, receiver.FirstName, Time, comments.Score, comments.Content"
                     + " FROM comments"
-                    + " INNER JOIN users AS sender ON sender.UserID = SenderID"
-                    + " INNER JOIN users AS receiver ON receiver.UserID = ReceiverID"
-                    + " INNER JOIN posts AS posts ON posts.PostID = PostID"
+                    + " INNER JOIN users AS sender ON sender.UserID = comments.SenderID"
+                    + " INNER JOIN users AS receiver ON receiver.UserID = comments.ReceiverID"
+                    + " INNER JOIN posts AS posts ON posts.PostID = comments.PostID"
                     + " WHERE posts.postID = ?";
             ps = conn.prepareStatement(query);
             ps.setInt(1, postID);
