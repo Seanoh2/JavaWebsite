@@ -6,8 +6,10 @@
 package DAO;
 
 import DTOS.Comment;
+import DTOS.Password;
 import DTOS.Post;
 import DTOS.User;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -82,7 +84,7 @@ public class CommentDAO extends DAO {
                         rs.getDate("Time"),
                         rs.getInt("Score"),
                         rs.getString("Content")
-                       ); 
+                );
                 commentList.add(c);
             }
         } catch (SQLException e) {
@@ -163,7 +165,7 @@ public class CommentDAO extends DAO {
                         rs.getDate("Time"),
                         rs.getInt("Score"),
                         rs.getString("Content")
-                       ); 
+                );
                 commentList.add(c);
             }
         } catch (SQLException e) {
@@ -187,7 +189,7 @@ public class CommentDAO extends DAO {
     }
 
     public ArrayList<Comment> getCommentsByPostID(int postID) {
-Connection conn = null;
+        Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         Comment c = null;
@@ -244,7 +246,7 @@ Connection conn = null;
                         rs.getDate("Time"),
                         rs.getInt("Score"),
                         rs.getString("Content")
-                       ); 
+                );
                 commentList.add(c);
             }
         } catch (SQLException e) {
@@ -265,6 +267,55 @@ Connection conn = null;
             }
         }
         return commentList;
+    }
+    
+    public boolean addComment(Comment c) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        int rs = 0;
+        Boolean result = null;
+
+        try {
+            conn = getConnection();
+            String query = "INSERT INTO users VALUES (NULL, ?, ?, ?, NOW(), 0, ?)";
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, c.getPost().getPostID());
+            ps.setInt(2, c.getSender().getUserID());
+            ps.setInt(3, c.getReceiver().getUserID());
+            ps.setString(4, c.getContent());
+
+            rs = ps.executeUpdate();
+        } catch (MySQLIntegrityConstraintViolationException e) {
+            System.out.println("Constraint Exception occurred: " + e.getMessage());
+            // Set the rowsAffected to -1, this can be used as a flag for the display section
+            rs = -1;
+
+        } catch (SQLException se) {
+            System.out.println("SQL Exception occurred: " + se.getMessage());
+            se.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Exception occurred: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    freeConnection(conn);
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception occured in the finally section in the addComment() method");
+            }
+        }
+        if (rs > 0) {
+            result = true;
+        } else {
+            result = false;
+        }
+
+        return result;
+
     }
 
 }

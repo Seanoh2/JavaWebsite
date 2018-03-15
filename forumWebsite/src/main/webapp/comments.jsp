@@ -56,5 +56,10 @@
                 <%=comment.getContent()%>
             </div>
             <% }%>
+            
+            <form action="sendComment.jsp" method="post">
+                <input type="hidden" value="<%=currentPost.getPostID()%>" name="postID">
+                <input type="submit" value="Post Comment">
+            </form>
     </body>
 </html>

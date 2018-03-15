@@ -63,7 +63,11 @@ public class CommandFactory {
                 case "addPost":
                     command = new MakeTextPostCommand();
                     break;
-        
+                    
+                case "sendComment":
+                    command = new SendCommentCommand();
+                    break;
+                    
                 default:
                     command = new NoValidActionCommand();
                     break;
