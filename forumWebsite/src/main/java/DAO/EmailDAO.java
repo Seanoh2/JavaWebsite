@@ -80,7 +80,7 @@ public class EmailDAO extends DAO {
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(email));
             message.setSubject("Password Recovery");
-            message.setText("Recovery Link: http://localhost:8084/LibraryJSP/resetPassword.jsp?ID=" + id.toString());
+            message.setText("Recovery Link: http://localhost:8084/forumWebsite/resetPassword.jsp?ID=" + id.toString());
 
             if (this.CreateRecoveryLog(id, email)) {
                 result = true;
@@ -106,7 +106,7 @@ public class EmailDAO extends DAO {
     public boolean CreateRecoveryLog(UUID id, String email) {
         Connection conn = null;
         PreparedStatement ps = null;
-        UserDAO userDao = new UserDAO("librarydatabase");
+        UserDAO userDao = new UserDAO("forumdatabase");
         int userID = userDao.getUserByEmail(email).getUserID();
         Boolean result = null;
         int rs = 0;
@@ -118,7 +118,7 @@ public class EmailDAO extends DAO {
 
             conn = getConnection();
 
-            String query = "INSERT INTO passwordrecovery VALUES (NULL,CURRENT_TIMESTAMP(),?,?)";
+            String query = "INSERT INTO passwordrecovery VALUES (NULL,?,?,NOW())";
             ps = conn.prepareStatement(query);
             ps.setInt(1, userID);
             ps.setString(2, encryptedString);
@@ -223,7 +223,7 @@ public class EmailDAO extends DAO {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        UserDAO userDao = new UserDAO("librarydatabase");
+        UserDAO userDao = new UserDAO("forumdatabase");
 
         Email check = new Email();
 
@@ -242,7 +242,7 @@ public class EmailDAO extends DAO {
                 check.setTime(rs.getDate("Time"));
                 check.setUser(userDao.findUserByID(rs.getInt("UserID")));
                 check.setUUID(rs.getString("UUID"));
-                check.setID(rs.getInt("ID"));
+                check.setID(rs.getInt("PRID"));
 
             }
 

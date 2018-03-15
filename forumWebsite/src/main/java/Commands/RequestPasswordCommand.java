@@ -31,8 +31,8 @@ public class RequestPasswordCommand implements Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         String forwardToJsp = "";
         HttpSession session = request.getSession();
-        UserDAO userDao = new UserDAO("librarydatabase");
-        EmailDAO emailDao = new EmailDAO("librarydatabase");
+        UserDAO userDao = new UserDAO("forumdatabase");
+        EmailDAO emailDao = new EmailDAO("forumdatabase");
         String email = request.getParameter("email");
 
         if (email != null && !email.isEmpty()) {

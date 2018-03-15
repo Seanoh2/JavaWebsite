@@ -31,8 +31,8 @@ public class ResetPasswordCommand implements Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         String forwardToJsp = "";
         HttpSession session = request.getSession();
-        EmailDAO emailDao = new EmailDAO("librarydatabase");
-        UserDAO userDao = new UserDAO("librarydatabase");
+        EmailDAO emailDao = new EmailDAO("forumdatabase");
+        UserDAO userDao = new UserDAO("forumdatabase");
 
         User userRequest = userDao.findUserByID(Integer.parseInt(request.getParameter("user")));
         String UUID = request.getParameter("UUID");
@@ -40,7 +40,7 @@ public class ResetPasswordCommand implements Command {
 
         if (userRequest != null) {
             if (UUID != null) {
-                if (userDao.updatePassword(password, userRequest)) {
+                if (userDao.updatePassword(password, Integer.parseInt(request.getParameter("user")))) {
                     String message = "Reset password Complete";
                     session.setAttribute("message", message);
                     forwardToJsp = "login.jsp";

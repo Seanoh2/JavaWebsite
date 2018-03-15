@@ -40,7 +40,7 @@ public class SignUpUserCommand implements Command {
             //If the user was added sucessfully, they are told so and than logged in automatically.
             if (addUser) {
                 session.setAttribute("user", u);
-                forwardToJsp = "Home.jsp";
+                forwardToJsp = "profile.jsp";
             } else {
                 //If any issues arised, they are not added and told so.
                 String errorMessage = "Error adding user to database";

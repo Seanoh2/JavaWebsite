@@ -317,7 +317,7 @@ public class UserDAO extends DAO implements UserDAOInterface {
 
         try {
             con = getConnection();
-            String query = "SELECT * FROM users WHERE email = ?";
+            String query = "SELECT * FROM users WHERE Email = ?";
             ps = con.prepareStatement(query);
 
             ps.setString(1, email);
@@ -325,11 +325,11 @@ public class UserDAO extends DAO implements UserDAOInterface {
 
             while (rs.next()) {
                 u = new User();
-                u.setUserID(rs.getInt("userID"));
-                u.setEmail(rs.getString("email"));
-                u.setPassword(rs.getString("password"));
-                u.setFirstName(rs.getString("firstName"));
-                u.setLastName(rs.getString("lastName"));
+                u.setUserID(rs.getInt("UserID"));
+                u.setFirstName(rs.getString("FirstName"));
+                u.setLastName(rs.getString("LastName"));
+                u.setEmail(rs.getString("Email"));
+                u.setPassword(rs.getString("Password"));             
                 u.setIsAdmin(rs.getBoolean("isAdmin"));
             }
 
@@ -403,7 +403,7 @@ public class UserDAO extends DAO implements UserDAOInterface {
 
     }
 
-    public boolean updatePassword(String password, User user) {
+    public boolean updatePassword(String password, int userID) {
         Connection conn = null;
         PreparedStatement ps = null;
         EmailDAO emailDao = new EmailDAO("librarydatabase");
@@ -412,13 +412,13 @@ public class UserDAO extends DAO implements UserDAOInterface {
 
         try {
             conn = getConnection();
-            String query = "UPDATE users SET password=? WHERE userID=?";
+            String query = "UPDATE users SET Password=? WHERE UserID=?";
             ps = conn.prepareStatement(query);
             String hashedPassword = Password.hashString(password);
 
             // Fill in the blanks, i.e. parameterize the query
             ps.setString(1, hashedPassword);
-            ps.setInt(2, user.getUserID());
+            ps.setInt(2, userID);
 
             // Execute the query
             rs = ps.executeUpdate();
@@ -454,7 +454,7 @@ public class UserDAO extends DAO implements UserDAOInterface {
 
         if (rs > 0) {
             result = true;
-            emailDao.removeRecovereyLog(user.getUserID());
+            emailDao.removeRecovereyLog(userID);
         } else {
             result = false;
         }
