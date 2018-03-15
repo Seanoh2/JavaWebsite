@@ -18,7 +18,7 @@ public interface ForumDAOInterface {
     
     public ArrayList<Forum> getForumsByTitle(String title);
     
-    public ArrayList<Forum> getForumByID(int ID);
+    public Forum getForumByID(int ID);
     
     public boolean addForum();
     

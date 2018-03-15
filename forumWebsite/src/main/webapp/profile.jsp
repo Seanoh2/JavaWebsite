@@ -24,7 +24,7 @@
         <link rel="stylesheet" type="text/css" href="Style/siteWide.css">
         <link rel=stylesheet" type="text/css" href="Style/header.css">
 
-        <%@include  file="header.html" %>
+        <%@include  file="header.jsp" %>
 
     </head>
 

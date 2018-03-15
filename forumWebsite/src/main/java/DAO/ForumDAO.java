@@ -117,12 +117,11 @@ public class ForumDAO extends DAO implements ForumDAOInterface {
     }
 
     @Override
-    public ArrayList<Forum> getForumByID(int ID) {
+    public Forum getForumByID(int ID) {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         Forum forum = null;
-        ArrayList<Forum> forums = new ArrayList();
 
         try {
             conn = getConnection();
@@ -132,15 +131,15 @@ public class ForumDAO extends DAO implements ForumDAOInterface {
             ps.setInt(1, ID);
             rs = ps.executeQuery();
 
-            while (rs.next()) {
+            if(rs.next()) {
                 forum = new Forum(
-                        rs.getInt("forumID"),
-                        rs.getString("title"),
-                        rs.getString("description"),
-                        rs.getString("sidebar"),
-                        rs.getString("wiki")
+                        rs.getInt("ForumID"),
+                        rs.getString("Title"),
+                        rs.getString("Description"),
+                        rs.getString("Sidebar"),
+                        rs.getString("Wiki")
                 );
-                forums.add(forum);
+
             }
 
         } catch (SQLException ex) {
@@ -160,7 +159,7 @@ public class ForumDAO extends DAO implements ForumDAOInterface {
                 System.out.println("Exception occured in the finally section of the getForumsByTitle() method: " + e.getMessage());
             }
         }
-        return forums;
+        return forum;
     }
 
     @Override

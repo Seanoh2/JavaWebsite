@@ -19,12 +19,12 @@
         <link rel=stylesheet" type="text/css" href="Style/header.css">
     </head>
     <body>
-        <%@include  file="header.html" %>
+        <%@include  file="header.jsp" %>
 
         <%PostDAO postdao = new PostDAO("forumdatabase");%>
-        <%Post currentPost = postdao.getPostByID(Integer.parseInt(request.getParameter("postID")));%>
+        <%Post currentPost = postdao.getPostByID(Integer.parseInt(request.getParameter("ID")));%>
         <%CommentDAO commentdao = new CommentDAO("forumdatabase");%>
-        <%ArrayList<Comment> comments = commentdao.getCommentsByPostID(Integer.parseInt(request.getParameter("postID")));%>
+        <%ArrayList<Comment> comments = commentdao.getCommentsByPostID(Integer.parseInt(request.getParameter("ID")));%>
 
         <title><%=currentPost.getTitle()%></title>
 
@@ -32,8 +32,10 @@
             <% if (currentPost.isIsLink()) {%>
             <iframe width="420" height="315"
                     src="<%=currentPost.getContent()%>">
-            </iframe> 
+            </iframe>
+            <% }else{%>
             <p><%=currentPost.getContent()%></p>
+            <%}%>
         </div>
 
         <% for (Comment comment : comments) { %>
