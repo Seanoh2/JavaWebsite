@@ -25,7 +25,7 @@
             <br>
             <input type="password" name="password" id="txtPassword" placeholder="password">
             <br><br>
-            <input type="submit" value="Login" class="submitButton">
+            <input type="submit" value="Login" class="submitButton" id="loginButton">
         </form>
         <a href="recoverPassword.jsp">Recover password</a>
     </body>

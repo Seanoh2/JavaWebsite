@@ -22,7 +22,7 @@
 
         <link rel="stylesheet" type="text/css" href="Style/myProfile.css">
         <link rel="stylesheet" type="text/css" href="Style/siteWide.css">
-        <link rel=stylesheet" type="text/css" href="Style/header.css">
+        <link rel="stylesheet" type="text/css" href="Style/header.css">
 
         <%@include  file="header.jsp" %>
 

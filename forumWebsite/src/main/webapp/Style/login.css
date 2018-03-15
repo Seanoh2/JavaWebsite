@@ -19,6 +19,7 @@
     border-style:solid;
     border-width:1px;
     border-color:white;
+    font-size:12px;
 }
 
 #txtPassword{
@@ -32,10 +33,11 @@
     border-style:solid;
     border-width:1px;
     border-color:white;
+    font-size:12px;
 }
 
 #login{
-    background-color: rgba(255, 0, 0, 0);
+    background-color: rgba(255, 0, 0, 0); 
     border: solid;
     border-color: white;
     border-width:2px;
@@ -53,4 +55,8 @@
     position: absolute;
     margin-top:170px;
     margin-left:150px;
+}
+
+#loginButton{
+    background-color: rgba(255, 0, 0, 0); 
 }

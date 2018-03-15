@@ -16,7 +16,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <link rel="stylesheet" type="text/css" href="Style/siteWide.css">
-        <link rel=stylesheet" type="text/css" href="Style/header.css">
+        <link rel="stylesheet" type="text/css" href="Style/header.css">
+        <link rel="stylesheet" type="text/css" href="Style/comments.css">
     </head>
     <body>
         <%@include  file="header.jsp" %>
@@ -26,7 +27,7 @@
         <%CommentDAO commentdao = new CommentDAO("forumdatabase");%>
         <%ArrayList<Comment> comments = commentdao.getCommentsByPostID(Integer.parseInt(request.getParameter("ID")));%>
 
-        <title><%=currentPost.getTitle()%></title>
+        <p id="title"><%=currentPost.getTitle()%></p>
 
         <div class="Content">
             <% if (currentPost.isIsLink()) {%>

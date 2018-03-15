@@ -38,3 +38,18 @@
     margin-left: 100px;
     margin-top: 150px;
 }
+
+#recover{
+    background-color: rgba(255, 0, 0, 0);
+    border: solid;
+    border-color: white;
+    border-width:2px;
+    color: white;
+    font-size: 18px;
+    height: 40px;
+    width: 200px;
+    transition: all 0.5s;
+    position: absolute;
+    margin-left: 100px;
+    margin-top: 200px;
+}

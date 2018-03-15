@@ -12,3 +12,37 @@ body{
     margin:0;
     padding:0;
 }
+
+#title{
+    position:absolute;
+    margin-top:200px;
+    margin-left:100px;
+    color:white;
+    font-size:30px;
+    width:600px;
+    height:200px;
+    border-style:solid;
+    border-color:white;
+    border-width:1px;
+}
+
+.Content{
+    position:absolute;
+    width:300px;
+    height:300px;
+    margin-top:275px;
+    margin-left:100px;
+}
+
+.response{
+    position:absolute;
+    margin-top:500px;
+    height:100px;
+    margin-left:300px;
+    font-size:20px;
+    color:white;     
+    border-style:solid;
+    border-color:white;
+    border-width:1px;
+    width:300px;
+}

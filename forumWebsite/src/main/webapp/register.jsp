@@ -23,13 +23,13 @@
             <input type="hidden" value="register" name="action">
             <input type="text" name="email" placeholder="email" class="txtField">
             <br>
-            <input type="text" name="password" placeholder="password" class="txtField">
+            <input type="password" name="password" placeholder="password" class="txtField">
             <br>
             <input type="text" name="firstName" placeholder="first name" class="txtField">
             <br>
             <input type="text" name="lastName" placeholder="last name" class="txtField">
             <br><br>
-            <input type="submit" value="Register" class="submitButton">
+            <input type="submit" value="Register" class="submitButton" id="registerButton">
         </form>
         
     </body>

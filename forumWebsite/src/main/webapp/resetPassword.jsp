@@ -18,13 +18,18 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Reset Password</title>
+        
+        <link rel="stylesheet" type="text/css" href="Style/siteWide.css">
+        <link rel="stylesheet" type="text/css" href="Style/resetPassword.css">
+        
+        
     </head>
     <body>
         <form id="resetpassword" action="FrontController" method="post">
         <input type="hidden" value="resetpassword" name="action">
         <input type="hidden" value="<%=requestedUser.getUserID()%>" name="user">
         <input type="hidden" value="<%=check%>" name="UUID">        
-        <input type="text" name="password" required>
+        <input type="password" id="password" placeholder="New password" name="password" required>
         <br><br>
         <input id="submit" type="submit" value="Reset">
         </form>

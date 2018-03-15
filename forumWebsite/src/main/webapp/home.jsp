@@ -21,6 +21,7 @@
         <div id="container">
             <button class="button" id="login" onclick="window.location.href = 'login.jsp'"><span> Login </span></button>
             <button class="button" id="register" onclick="window.location.href = 'register.jsp'"><span> Register </span></button>
+            <button class="button" id="recover" onclick="window.location.href= 'recoverPassword.jsp'"><span> Recover Password </span></button>
         </div>
     </body>
 </html>
