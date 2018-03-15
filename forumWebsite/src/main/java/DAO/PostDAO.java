@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Set;
 
 /**
  *
@@ -241,6 +242,54 @@ public class PostDAO extends DAO {
             }
         }
         return post;
+    }
+    
+    public boolean addPost(Post p) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        int rs = 0;
+        Boolean result = null;
+
+        try {
+            conn = getConnection();
+            
+            String query = "INSERT INTO posts VALUES (NULL, ?, ?, ?, ?, ?, ?)";
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, p.getPoster().getUserID());
+            ps.setInt(2, p.getForumID());
+            ps.setBoolean(3, p.isIsLink());
+            ps.setString(4, p.getTitle());
+            ps.setString(5, p.getContent());
+            ps.setInt(6, p.getScore());
+
+            rs = ps.executeUpdate();
+
+        } catch (SQLException se) {
+            System.out.println("SQL Exception occurred: " + se.getMessage());
+            se.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Exception occurred: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    freeConnection(conn);
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception occured in the finally section in the addPost() method");
+            }
+        }
+        if (rs > 0) {
+            result = true;
+        } else {
+            result = false;
+        }
+
+        return result;
+
     }
     
 }

@@ -58,8 +58,8 @@ a{
 }
 
 a:hover{
-    -moz-transition:0.5s;
-    color:red;
+    -moz-transition:0.2s;
+    color:#76e291;
 }
 
 #misc{

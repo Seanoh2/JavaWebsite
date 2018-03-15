@@ -10,7 +10,6 @@ and open the template in the editor.
 
 h1{
     color:white;
-
 }
 
 body{
@@ -22,14 +21,12 @@ body{
     margin-top:150px;
     height:100px;
     width:100%;
-
 }
 
 .postContainer{
     position:static;
     height:100%;
     width:100%;
-    margin-top:20px;
     background-color:#1f1f21;
 }
 
@@ -49,9 +46,10 @@ body{
 
 .content{
     color:white;
-    position:absolute;
+    position: absolute;
     margin-top:35px;
     margin-left:120px;
+    font-size:12px;
 }
 
 .score{
@@ -80,4 +78,15 @@ body{
     position:absolute;
     margin-left:140px;
     margin-top:55px;
+    transition:0.5s;
+}
+
+.op:hover{
+    transition:0.5s;
+    color:#76e291;
+}
+.rating{
+    position:absolute;
+    width:70px;
+    height:50px;
 }

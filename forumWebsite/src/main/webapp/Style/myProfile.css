@@ -30,7 +30,8 @@ and open the template in the editor.
 .change:hover{
     -moz-transition:0.5s;
     color:red;
-    border-color:red;
+    border-color:#76e291;
+    color:#76e291;
 }
 
 #btnEmail{

@@ -51,7 +51,7 @@
         <div id="posts">
 
             <% for (Post post : posts) {%>
-            <a class="comment" href="comments.jsp?<%=post.getPostID()%>"><%=post.getTitle()%></a>
+            <a class="comment" href="comments.jsp?ID=<%=post.getPostID()%>"><%=post.getTitle()%></a>
             <br>
             <br>
             <% } %>

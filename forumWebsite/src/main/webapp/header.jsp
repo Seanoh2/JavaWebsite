@@ -25,7 +25,7 @@
     
     <form id="searchArea">
         <input type="text" placeholder="search..." id="searchbar">
-        <input type="button" id="btnSearch" value="search"/>
+        <input type="button" id="btnSearch" value="Search"/>
     </form>
 
     <div id="linkContainer">
@@ -37,7 +37,7 @@
     </div>
 
     <div id="aboutUs">
-        <a href="howToUse.jsp"> How to use (insert forum name here) </a>
+        <a href="howToUse.jsp"> How to use Discover </a>
         <br>
         <br>
         <a href="aboutUs.jsp"> About Us </a>
@@ -45,13 +45,13 @@
     
     <div id="misc">
 
-        <a href="settings.jsp"> settings </a>
+        <a href="settings.jsp"> Settings </a>
         <br>
         <br>
-        <a href="profile.jsp"> profile </a>
+        <a href="profile.jsp"> Profile </a>
         <br>
         <br>
-        <a href="settings.jsp"> logout </a>
+        <a href="settings.jsp"> Logout </a>
 
     </div>
 
