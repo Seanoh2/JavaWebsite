@@ -28,8 +28,9 @@
             <form action="FrontController" method="post" id="sendComment">
                 <input type="hidden" value="sendComment" name="action">
                 <input type="hidden" value="<%=postID%>" name="postID">
-                <input type="hidden" value="0" name="receiverID">
+                <input type="hidden" value="<%=u1.getUserID()%>" name="receiverID">
                 <input type="hidden" value="<%=u1.getUserID()%>" name="senderID">
+                <input type="text" name="content">
                 <br><br>
                 <input type="submit" value="Send" class="submitButton">
             </form>
