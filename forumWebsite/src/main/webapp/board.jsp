@@ -43,7 +43,7 @@
                 <div class="postContainer">
                     <a class="title" href=" comments.jsp?ID=<%=post.getPostID()%>"><%=post.getTitle()%></a>
                     <p class="content"> <%=post.getContent()%> </p>
-                    <a href="../profile.jsp?<%=post.getPoster().getUserID()%>" class="op"> <%=post.getPoster().getFirstName() + " " + post.getPoster().getLastName()%> <a/>
+                    <a href="../profile.jsp?<%=post.getPoster().getUserID()%>" class="op"> <%=post.getPoster().getFirstName() + " " + post.getPoster().getLastName()%> </a>
                     <p class="score"> <%=post.getScore()%> </p>
                     <div class="rating">
                         <button type="button" class="plus"> &#x2b; </button>

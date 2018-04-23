@@ -4,6 +4,7 @@
     Author     : Seanoh
 --%>
 
+<%@page import="DTOS.User"%>
 <%@page import="DTOS.Comment"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="DTOS.Post"%>
@@ -27,33 +28,38 @@
         <%CommentDAO commentdao = new CommentDAO("forumdatabase");%>
         <%ArrayList<Comment> comments = commentdao.getCommentsByPostID(Integer.parseInt(request.getParameter("ID")));%>
 
-        <p id="title"><%=currentPost.getTitle()%></p>
+        <div id="postContainer">
+            <p id="title"><%=currentPost.getTitle()%></p>
 
-        <div class="Content">
-            <% if (currentPost.isIsLink()) {%>
-            <% if (currentPost.getContent().contains("youtube.com") == true) { %>
-            <iframe width="420" height="315"
-                    src="<%=currentPost.getContent()%>">
-            </iframe>
-            <% } else { %>
-            <a href="<%=currentPost.getContent()%>"><%=currentPost.getTitle()%></a>
-            <% } 
-            } else { 
-            %>
-            <p><%=currentPost.getContent()%></p>
-            <% } %>
+            <div id="content">
+                <% if (currentPost.isIsLink()) {%>
+                <% if (currentPost.getContent().contains("youtube.com") == true) { %>
+                <iframe width="420" height="315"
+                        src="<%=currentPost.getContent()%>">
+                </iframe>
+                <% } else { %>
+                <a href="<%=currentPost.getContent()%>"><%=currentPost.getTitle()%></a>
+                <% } 
+                } else { 
+                %>
+                <p><%=currentPost.getContent()%></p>
+                <% User user1 =  (currentPost.getPoster());%>
+                <a><%=user1.getEmail()%></a>
+                <% } %>
+            </div>
         </div>
 
         <% for (Comment comment : comments) {
            if (comment.getReceiver() == null) { 
          %>
-        <div class="comment">
             <% } else { %>
             <div class="response">
                 <% }%>
-                <a href="viewProfile.jsp?ID=<%=comment.getSender().getUserID()%>"><%=comment.getSender().getFirstName()%></a>
+                
+                <p class="comment"><%=comment.getContent()%></p>
                 <br/>
-                <%=comment.getContent()%>
+                <a class="sender" href="viewProfile.jsp?ID=<%=comment.getSender().getUserID()%>"><%=comment.getSender().getFirstName()%></a>
+                
             </div>
             <% }%>
             

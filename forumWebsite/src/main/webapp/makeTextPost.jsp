@@ -27,12 +27,12 @@
             <form action="FrontController" method="post" id="makeTextPost">
                 <input type="hidden" value="addPost" name="action">
                 <input type="text" id="title" placeholder="title" name="title"/>
-                <input type="hidden" value="<%=request.getParameter("forumID")%>" name="forumID">
                 <br>
-                <input type="content" id="content" placeholder="content" name="content"/>
+                 <textarea rows="4" cols="50" id="content" placeholder="content" name="content"> </textarea> 
+                <input type="hidden" value="<%=request.getParameter("forumID")%>" name="forumID">
+                
                 <br>
                 <button type="submit" value="submit" id="submitButton"> Submit </button>
-                <p> <%=request.getParameter("forumID")%></p>
             </form>
         </div>
     </body>
