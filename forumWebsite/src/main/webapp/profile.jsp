@@ -35,21 +35,25 @@
         %>
 
         <div id="info">
-            <p> email address: <%=u1.getEmail()%> </p>
-            <input type="button" value="change" class="change" id="btnEmail"/>
-            <p> first name: <%=u1.getFirstName()%> </p>
-            <input type="button" value="change" class="change" id="btnFirstName"/>
-            <p> last name: <%=u1.getLastName()%> </p>
-            <input type="button" value="change" class="change" id="btnLastName"/>
-            <p> user identification number: <%=u1.getUserID()%> </p>
+            <center>
+                <h2 class="headings">Your Profile</h2>
+                <br>
+                <br>
+                <p class="details"> Email address: <%=u1.getEmail()%> </p>
+                <p class="details"> First name: <%=u1.getFirstName()%> </p>
+                <p class="details"> Last name: <%=u1.getLastName()%> </p>
+                <input type="submit" value="Update Details" id="updateDetails">
+            </center>
         </div>
-
+        
+        
+        
         <% PostDAO postdao = new PostDAO("forumdatabase");
             ArrayList<Post> posts = postdao.getPostsByUserID(u1.getUserID());
         %>
 
         <div id="posts">
-
+            <center><h2 class="headings">Your posts</h2></center>
             <% for (Post post : posts) {%>
             <a class="comment" href="comments.jsp?ID=<%=post.getPostID()%>"><%=post.getTitle()%></a>
             <br>

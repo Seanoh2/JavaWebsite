@@ -10,12 +10,14 @@ and open the template in the editor.
 
 #info{
     position:absolute;
-    font-family: monospace;
+    font-family: fantasy;
     background-color:#1f1f21;
     box-shadow: 5px 10px #1a1b1c;
-    margin-top:300px;
+    margin-top:140px;
     margin-left:20px;
-    width:400px;    
+    min-width:300px;    
+    font-size:10px;
+    min-height:500px;
 }
 
 .change{
@@ -45,7 +47,7 @@ and open the template in the editor.
 }
 
 #btnLastName{
-     margin-left:250px;
+    margin-left:250px;
     margin-top:-30px;
 }
 
@@ -55,20 +57,29 @@ and open the template in the editor.
     box-shadow: 5px 10px #1a1b1c;
     margin-top:300px;
     margin-left:470px;
-    width:400px;
-    height:125px;
+    min-width:700px;
+    min-height:125px;
 }
 
-#comments{
-    position: absolute;
-    background-color:#1f1f21;
-    box-shadow: 5px 10px #1a1b1c;
-    margin-top:300px;
-    margin-left:920px;
-    width:400px;
-    height:125px;
+
+.headings{
+    color:white;
+    font-size:20px;
 }
 
-.comment{
-    
+#updateDetails{
+    position:absolute;
+    margin-top:40px;
+    margin-left:-50px;
+    color:white;
+    background-color: rgba(255, 0, 0, 0); 
+    width:100px;
+    height:40px;
+}
+
+.details{
+    color:white;
+    font-family:fantasy;
+    font-size:16px;
+    margin-top:20px;
 }

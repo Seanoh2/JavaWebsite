@@ -18,7 +18,7 @@
     
         <div id="logoArea">
             <img src="Media/logo.png" class="logo" alt="logo"/>
-            <img src="../Media/logo.png" class="logo" alt="logo"/>
+            
         </div>
     
     </a>

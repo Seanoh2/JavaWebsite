@@ -18,11 +18,21 @@
         <link rel="stylesheet" type="text/css" href="Style/board.css">
         <link rel="stylesheet" type="text/css" href="Style/siteWide.css">
         <link rel=stylesheet" type="text/css" href="Style/header.css">
-        
         <% 
             int id = Integer.parseInt(request.getParameter("ID"));
             ForumDAO forumdao = new ForumDAO("forumdatabase");
             PostDAO postdao = new PostDAO("forumdatabase");
+            Forum f1 = forumdao.getForumByID(id);
+        %>
+        
+        <div id="titleArea">
+            <% String title = f1.getTitle();%>
+            <h1><%=(title.substring(0,1).toUpperCase() + title.substring(1))%></h1>
+            
+        </div>
+        
+        <% 
+            
             ArrayList <Post> posts = postdao.getPostsByForum(id);
             Forum forum = forumdao.getForumByID(id);
         %>
