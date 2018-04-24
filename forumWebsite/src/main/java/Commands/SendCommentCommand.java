@@ -26,7 +26,7 @@ public class SendCommentCommand implements Command {
         String forwardToJsp = "";
         HttpSession session = request.getSession();
         CommentDAO messageDao = new CommentDAO("forumdatabase");
-        Comment c = new Comment(
+        Comment c = new Comment (
                         0,
                         new Post(
                                 Integer.parseInt(request.getParameter("postID")),

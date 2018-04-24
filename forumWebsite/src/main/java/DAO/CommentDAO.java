@@ -271,7 +271,7 @@ public class CommentDAO extends DAO {
         
         try {
             conn = getConnection();
-            String query = "INSERT INTO comments VALUES (NULL, ?, ?, ?, NOW(), 0, ?)";
+            String query = "INSERT INTO comments VALUES (NULL, ?, ?, ?, NOW(), ?)";
             ps = conn.prepareStatement(query);
             ps.setInt(1, c.getPost().getPostID());
             ps.setInt(2, c.getSender().getUserID());
