@@ -36,7 +36,7 @@ public class CommentDAO extends DAO {
         try {
             conn = getConnection();
             String query = "SELECT CommentID, posts.postID, posts.userID, posts.Title, posts.ForumID, sender.UserID, sender.FirstName,"
-                    + " receiver.UserID, receiver.FirstName, Time, comments.Score, comments.Content"
+                    + " receiver.UserID, receiver.FirstName, Time, comments.Content"
                     + " FROM comments"
                     + " INNER JOIN users AS sender ON sender.UserID = comments.SenderID"
                     + " INNER JOIN users AS receiver ON receiver.UserID = comments.ReceiverID"
@@ -62,8 +62,7 @@ public class CommentDAO extends DAO {
                                 rs.getInt("posts.ForumID"),
                                 false,
                                 rs.getString("posts.Title"),
-                                null,
-                                0
+                                null
                         ),
                         new User(
                                 rs.getInt("sender.UserID"),
@@ -82,7 +81,6 @@ public class CommentDAO extends DAO {
                                 false
                         ),
                         rs.getDate("Time"),
-                        rs.getInt("Score"),
                         rs.getString("Content")
                 );
                 commentList.add(c);
@@ -117,7 +115,7 @@ public class CommentDAO extends DAO {
         try {
             conn = getConnection();
             String query = "SELECT CommentID, posts.postID, posts.userID, posts.Title, posts.ForumID, sender.UserID, sender.FirstName,"
-                    + " receiver.UserID, receiver.FirstName, Time, comments.Score, comments.Content"
+                    + " receiver.UserID, receiver.FirstName, Time, comments.Content"
                     + " FROM comments"
                     + " INNER JOIN users AS sender ON sender.UserID = comments.SenderID"
                     + " INNER JOIN users AS receiver ON receiver.UserID = comments.ReceiverID"
@@ -143,8 +141,7 @@ public class CommentDAO extends DAO {
                                 rs.getInt("posts.ForumID"),
                                 false,
                                 rs.getString("posts.Title"),
-                                null,
-                                0
+                                null
                         ),
                         new User(
                                 rs.getInt("sender.UserID"),
@@ -163,7 +160,6 @@ public class CommentDAO extends DAO {
                                 false
                         ),
                         rs.getDate("Time"),
-                        rs.getInt("Score"),
                         rs.getString("Content")
                 );
                 commentList.add(c);
@@ -198,7 +194,7 @@ public class CommentDAO extends DAO {
         try {
             conn = getConnection();
             String query = "SELECT CommentID, posts.postID, posts.userID, posts.Title, posts.ForumID, sender.UserID, sender.FirstName,"
-                    + " receiver.UserID, receiver.FirstName, Time, comments.Score, comments.Content"
+                    + " receiver.UserID, receiver.FirstName, Time, comments.Content"
                     + " FROM comments"
                     + " INNER JOIN users AS sender ON sender.UserID = comments.SenderID"
                     + " INNER JOIN users AS receiver ON receiver.UserID = comments.ReceiverID"
@@ -224,8 +220,7 @@ public class CommentDAO extends DAO {
                                 rs.getInt("posts.ForumID"),
                                 false,
                                 rs.getString("posts.Title"),
-                                null,
-                                0
+                                null
                         ),
                         new User(
                                 rs.getInt("sender.UserID"),
@@ -244,7 +239,6 @@ public class CommentDAO extends DAO {
                                 false
                         ),
                         rs.getDate("Time"),
-                        rs.getInt("Score"),
                         rs.getString("Content")
                 );
                 commentList.add(c);

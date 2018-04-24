@@ -41,8 +41,7 @@ public class SendCommentCommand implements Command {
                                 0,
                                 false,
                                 null,
-                                null,
-                                0
+                                null
                         ),
                         new User(
                                 Integer.parseInt(request.getParameter("senderID")),
@@ -61,7 +60,6 @@ public class SendCommentCommand implements Command {
                                 false
                         ),
                         null,
-                        0,
                         request.getParameter("content")
                 );
         

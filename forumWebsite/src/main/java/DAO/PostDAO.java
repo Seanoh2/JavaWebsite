@@ -32,7 +32,7 @@ public class PostDAO extends DAO {
 
         try {
             conn = getConnection();
-            String query = "SELECT users.UserID, users.FirstName, users.LastName, users.Email, users.isAdmin, PostID, ForumID, IsLink, Title, Content, Score FROM posts INNER JOIN users ON posts.UserID = users.UserID;";
+            String query = "SELECT users.UserID, users.FirstName, users.LastName, users.Email, users.isAdmin, PostID, ForumID, IsLink, Title, Content FROM posts INNER JOIN users ON posts.UserID = users.UserID;";
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
 
@@ -50,8 +50,7 @@ public class PostDAO extends DAO {
                         rs.getInt("ForumID"),
                         rs.getBoolean("IsLink"),
                         rs.getString("Title"),
-                        rs.getString("Content"),
-                        rs.getInt("Score")
+                        rs.getString("Content")
                 );
                 postList.add(p);
             }
@@ -85,7 +84,7 @@ public class PostDAO extends DAO {
             conn = getConnection();
 
             String query = "SELECT users.UserID, users.FirstName, users.LastName, users.Email, users.isAdmin,"
-                    + " PostID, ForumID, IsLink, Title, Content, Score FROM posts "
+                    + " PostID, ForumID, IsLink, Title, Content FROM posts "
                     + " INNER JOIN users ON posts.UserID = users.UserID "
                     + " WHERE ForumID = ? ";
             ps = conn.prepareStatement(query);
@@ -106,8 +105,7 @@ public class PostDAO extends DAO {
                         rs.getInt("ForumID"),
                         rs.getBoolean("IsLink"),
                         rs.getString("Title"),
-                        rs.getString("Content"),
-                        rs.getInt("Score")
+                        rs.getString("Content")
                 );
                 postList.add(p);
             }
@@ -142,7 +140,7 @@ public class PostDAO extends DAO {
             conn = getConnection();
 
             String query = "SELECT users.UserID, users.FirstName, users.LastName, users.Email, users.isAdmin,"
-                    + " PostID, ForumID, IsLink, Title, Content, Score FROM posts "
+                    + " PostID, ForumID, IsLink, Title, Content FROM posts "
                     + " INNER JOIN users ON posts.UserID = users.UserID "
                     + " WHERE posts.UserID = ? ";
             ps = conn.prepareStatement(query);
@@ -163,8 +161,7 @@ public class PostDAO extends DAO {
                         rs.getInt("ForumID"),
                         rs.getBoolean("IsLink"),
                         rs.getString("Title"),
-                        rs.getString("Content"),
-                        rs.getInt("Score")
+                        rs.getString("Content")
                 );
                 postList.add(p);
             }
@@ -198,7 +195,7 @@ public class PostDAO extends DAO {
             conn = getConnection();
 
             String query = "SELECT users.UserID, users.FirstName, users.LastName, users.Email, users.isAdmin,"
-                    + " PostID, ForumID, IsLink, Title, Content, Score FROM posts "
+                    + " PostID, ForumID, IsLink, Title, Content FROM posts "
                     + " INNER JOIN users ON posts.UserID = users.UserID "
                     + " WHERE posts.postID = ? ";
             ps = conn.prepareStatement(query);
@@ -219,8 +216,7 @@ public class PostDAO extends DAO {
                         rs.getInt("ForumID"),
                         rs.getBoolean("IsLink"),
                         rs.getString("Title"),
-                        rs.getString("Content"),
-                        rs.getInt("Score")
+                        rs.getString("Content")
                 );
             }
         } catch (SQLException e) {
@@ -259,7 +255,6 @@ public class PostDAO extends DAO {
             ps.setBoolean(3, p.isIsLink());
             ps.setString(4, p.getTitle());
             ps.setString(5, p.getContent());
-            ps.setInt(6, p.getScore());
 
             rs = ps.executeUpdate();
 

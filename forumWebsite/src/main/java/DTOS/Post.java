@@ -17,7 +17,6 @@ public class Post implements Comparable<Post> {
     private boolean isLink;
     private String title;
     private String content;
-    private int score;
 
     /**
      * Fully constructed Post object Main constructor.
@@ -28,16 +27,14 @@ public class Post implements Comparable<Post> {
      * @param isLink
      * @param title
      * @param content
-     * @param score
      */
-    public Post(int postID, User poster, int forumID, boolean isLink, String title, String content, int score) {
+    public Post(int postID, User poster, int forumID, boolean isLink, String title, String content) {
         this.postID = postID;
         this.poster = poster;
         this.forumID = forumID;
         this.isLink = isLink;
         this.title = title;
         this.content = content;
-        this.score = score;
     }
 
     /**
@@ -140,27 +137,6 @@ public class Post implements Comparable<Post> {
      */
     public void setContent(String content) {
         this.content = content;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getScore() {
-        return score;
-    }
-
-    /**
-     *
-     * @param score
-     */
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    @Override
-    public String toString() {
-        return "Post{" + "postID=" + postID + ", poster=" + poster.getUserID() + ", forumID=" + forumID + ", isLink=" + isLink + ", title=" + title + ", content=" + content + ", score=" + score + '}';
     }
 
     @Override

@@ -18,16 +18,14 @@ public class Comment {
     private User sender;
     private User receiver;
     private Date time;
-    private int score;
     private String content;
 
-    public Comment(int commentID, Post post, User sender, User receiver, Date time, int score, String content) {
+    public Comment(int commentID, Post post, User sender, User receiver, Date time, String content) {
         this.commentID = commentID;
         this.post = post;
         this.sender = sender;
         this.receiver = receiver;
         this.time = time;
-        this.score = score;
         this.content = content;
     }
 
@@ -50,14 +48,6 @@ public class Comment {
 
     public void setTime(Date time) {
         this.time = time;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
     }
 
     public String getContent() {
@@ -119,17 +109,5 @@ public class Comment {
             return false;
         }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Comment{" + "commentID=" + commentID + ", post=" + post + ", sender=" + sender + ", receiver=" + receiver + ", time=" + time + ", score=" + score + ", content=" + content + '}';
-    }
-
-    
-    
-    
-    
-    
-    
+    }  
 }
