@@ -248,7 +248,7 @@ public class PostDAO extends DAO {
         try {
             conn = getConnection();
             
-            String query = "INSERT INTO posts VALUES (NULL, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO posts VALUES (NULL, ?, ?, ?, ?, ?)";
             ps = conn.prepareStatement(query);
             ps.setInt(1, p.getPoster().getUserID());
             ps.setInt(2, p.getForumID());
