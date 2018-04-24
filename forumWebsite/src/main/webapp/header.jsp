@@ -37,7 +37,7 @@
     </div>
 
     <div id="aboutUs">
-        <a href="howToUse.jsp"> How to use Discover </a>
+        <a href="howTo.jsp"> How to use Discover </a>
         <br>
         <br>
         <a href="aboutUs.jsp"> About Us </a>

@@ -1,0 +1,21 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24-Apr-2018, 14:07:43
+    Author     : tomwozzer
+*/
+
+#aboutContainer{
+    position: absolute;
+    background-color:#1f1f21;
+    box-shadow: 5px 10px #1a1b1c;
+    min-height:50%;
+    min-width:50%;
+    border-style:solid;
+    border-color:white;
+    border-width:1px;
+    margin-top:200px;
+}

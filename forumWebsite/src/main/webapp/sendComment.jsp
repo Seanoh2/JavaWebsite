@@ -30,7 +30,7 @@
                 <input type="hidden" value="<%=postID%>" name="postID">
                 <input type="hidden" value="<%=u1.getUserID()%>" name="receiverID">
                 <input type="hidden" value="<%=u1.getUserID()%>" name="senderID">
-                <input type="text" name="content">
+                <input type="text" name="content" id="txtComment">
                 <br><br>
                 <input type="submit" value="Send" class="submitButton">
             </form>

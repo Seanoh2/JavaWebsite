@@ -18,18 +18,20 @@ body{
     background-color:#1f1f21;
     box-shadow: 5px 10px #1a1b1c;
     width:70%;
-    min-height:120px;
+    min-height:150px;
     margin-left:5%;
-    padding:10px;
+    
 }
 
 #title{
     margin-left:5%;
     font-size:20px;
+    padding:10px;
 }
 
 #content{
     margin-left:10%;
+    margin-top:-10px;
 }
 
 
@@ -46,10 +48,19 @@ body{
 #postComment{
     background-color: rgba(255, 0, 0, 0);
     color:white;
-    border-color:white;
+    border-style:none;
+    font-size:12px;
     width:100px;
     height:40px;
-    margin-left:100px;
+    margin-left:10px;
+    position:absolute;
+    margin-top:-640px;
+    transition:0.5s;
+}
+
+#postComment:hover{
+    transition:0.5s;
+    color:#76e291;
 }
 
 #formPost{
