@@ -5,6 +5,7 @@
  */
 package Servlet;
 
+import DAO.RatingDAO;
 import DTOS.Rating;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -35,9 +36,11 @@ public class RatingServlet extends HttpServlet {
         Rating rate = new Rating(0,
                 Integer.parseInt(request.getParameter("userID")),
                 Integer.parseInt(request.getParameter("postID")),
-                Integer.parseInt(request.getParameter("rating")));
-        
-        
+                Integer.parseInt(request.getParameter("rating"))
+        );
+        RatingDAO ratingdao = new RatingDAO("forumdatabase");
+        ratingdao.updateRating(rate);
+        System.out.println("BLANK");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
