@@ -29,26 +29,16 @@ public class RatingDAO extends DAO {
         boolean result = false;
         try {
             conn = getConnection();
-            String query = "IF EXISTS (SELECT * FROM ratings "
-                    + "WHERE userID = ? "
-                    + "AND postID = ?) "
-                    + "UPDATE ratings "
-                    + "SET rating = ? "
-                    + "WHERE userID = ? "
-                    + "AND postID = ? "
-                    + "ELSE "
-                    + "INSERT INTO ratings (rateID, userID, postID, rating) "
-                    + "VALUES (NULL, ?, ?, ?)";
+            String query = "INSERT INTO ratings "
+                    + "VALUES(NULL,?,?,?) "
+                    + "ON DUPLICATE KEY "
+                    + "UPDATE rating = ?";
             ps = conn.prepareStatement(query);
             ps.setInt(1, rate.getUserID());
             ps.setInt(2, rate.getPostID());
             ps.setInt(3, rate.getRating());
-            ps.setInt(4, rate.getUserID());
-            ps.setInt(5, rate.getPostID());
-            ps.setInt(6, rate.getUserID());
-            ps.setInt(7, rate.getPostID());
-            ps.setInt(8, rate.getRating());
-            rs = ps.executeQuery();
+            ps.setInt(4, rate.getRating());
+            result = ps.execute();
 
         } catch (SQLException e) {
             System.out.println("Exception occured in the updateRating() method: " + e.getMessage());

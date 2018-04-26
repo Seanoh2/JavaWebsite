@@ -21,7 +21,7 @@
             <% User u1 = (User) session.getAttribute("user");%>
             var userID2 = <%=u1.getUserID()%>
             $.ajax({
-                    url: "../RatingServlet",
+                    url: "RatingServlet",
                     type: "POST",
                     data: {userID : userID2,
                             postID : $(this).data('post'),
