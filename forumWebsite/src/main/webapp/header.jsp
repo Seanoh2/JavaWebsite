@@ -4,6 +4,7 @@
     Author     : Tomwozzer
 --%>
 
+<%@page import="DTOS.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,15 +14,14 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <div id="header">
-
-    <a href="home.jsp">
+    
+    <br>
     
         <div id="logoArea">
             <img src="Media/logo.png" class="logo" alt="logo"/>
             
         </div>
-    
-    </a>
+   
     
     <form id="searchArea">
         <input type="text" placeholder="search..." id="searchbar">
@@ -36,23 +36,37 @@
         <a href="board.jsp?ID=5" id="sports"> /sports/ </a>
     </div>
 
-    <div id="aboutUs">
-        <a href="howTo.jsp"> How to use Discover </a>
-        <br>
-        <br>
-        <a href="aboutUs.jsp"> About Us </a>
+    <%
+        User loggedIn = (User) session.getAttribute("user");
+        out.println("<div id='nameContainer'>");
+             if(loggedIn == null){
+            
+    %>
+            <% out.println("<a href='login.jsp' class='accountLink'>login</a>");%>
+            <br>
+            <% out.println("<a href='register.jsp' class='accountLink'>register</a>");%>
+            
+    <% 
+       } else{
+            out.println("<p id='loggedIn'> Hello </p> <a href='profile.jsp' id='loggedInName'>" + loggedIn.getEmail() + "</a>");
+        }
+    %>
+        
+    
+         
     </div>
     
     <div id="misc">
-
-        <a href="settings.jsp"> Settings </a>
+        <a href="howTo.jsp"> How to use Discover </a>
         <br>
+        <a href="aboutUs.jsp"> About Us </a>
         <br>
-        <a href="profile.jsp"> Profile </a>
-        <br>
-        <br>
-        <a href="settings.jsp"> Logout </a>
-
+        
+        <%
+          if(loggedIn != null){
+              out.print("<a href='settings.jsp'> Logout </a>");
+          }      
+        %>
     </div>
 
 </div>

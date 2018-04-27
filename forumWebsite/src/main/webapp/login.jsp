@@ -21,6 +21,8 @@
     <body>
         <form action="FrontController" method="post" id="loginForm">
             <input type="hidden" value="login" name="action">
+            
+            <h2 id="loginTitle"> Login </h2>
             <input type="text" name="email" id="txtEmail" placeholder="email address">
             <br>
             <input type="password" name="password" id="txtPassword" placeholder="password">

@@ -18,6 +18,10 @@
 
     </head>
     <body>
+        <div id="welcomeContainer">
+            <center><h2 id="welcomeText"> Welcome to Discover </h2></center>
+        </div>
+        
         <div id="container">
             <button class="button" id="login" onclick="window.location.href = 'login.jsp'"><span> Login </span></button>
             <button class="button" id="register" onclick="window.location.href = 'register.jsp'"><span> Register </span></button>

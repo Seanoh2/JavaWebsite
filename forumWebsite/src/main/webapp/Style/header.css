@@ -25,8 +25,13 @@ a{
     color:white;
     font-family:fantasy;
     margin-left:20px;
-    -moz-transition:0.5s;
+    transition:0.5s;
     font-size: 12px;
+}
+
+a:hover{
+    transition:0.2s;
+    color:#76e291;
 }
 
 #btnSearch{
@@ -57,17 +62,6 @@ a{
 
 }
 
-a:hover{
-    -moz-transition:0.2s;
-    color:#76e291;
-}
-
-#misc{
-    position: absolute;
-    margin-left:1200px;
-    margin-top:-60px;
-}
-
 #logoArea{
     border-style: solid;
     border-color:white;
@@ -86,8 +80,46 @@ a:hover{
     height:80px;
 }
 
-#aboutUs{
+#nameContainer{
     position: absolute;
-    margin-left:830px;
-    margin-top:-40px;
+    min-height:40px;
+    min-width:200px;
+    margin-left:85%;
+    margin-top:-5.5%;
+}
+
+#misc{
+    position: absolute;
+    margin-left:85%;
+    margin-top:-30px;
+}
+
+#loggedIn{
+   position:absolute;
+   margin-top:7%;
+   font-size:20px;
+   margin-left:10%;
+}
+
+#loggedInName{
+    position:absolute;
+   margin-top:7%;
+   font-size:20px;
+   -moz-transition:0.2s;
+   color:#76e291;
+   margin-left:36%;
+}
+
+#loggedInName:hover{
+   color:white;
+}
+
+.accountLink{
+    font-size:16px;
+    color:#76e291;
+}
+
+.accountLink:hover{
+    font-size:16px;
+    color:white;
 }
