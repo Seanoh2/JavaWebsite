@@ -64,7 +64,7 @@
         
         <%
           if(loggedIn != null){
-              out.print("<a href='settings.jsp'> Logout </a>");
+              out.print("<a href='logoutConfirm.jsp'> Logout </a>");
           }      
         %>
     </div>

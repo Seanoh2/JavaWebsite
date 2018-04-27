@@ -11,6 +11,7 @@ body{
     height:19%;
     background-color: #333131;
     margin:0;
+    z-index: 1;
 }
 
 #searchArea{

@@ -44,14 +44,8 @@
             ForumDAO forumdao = new ForumDAO("forumdatabase");
             PostDAO postdao = new PostDAO("forumdatabase");
             Forum f1 = forumdao.getForumByID(id);
-        %>
-
-    <div id="titleArea">
-        <% String title = f1.getTitle();%>
-        <h1><%=(title.substring(0, 1).toUpperCase() + title.substring(1))%></h1>
-
-    </div>
-
+        %>                
+    
     <%
         ArrayList<Post> posts = postdao.getPostsByForum(id);
         Forum forum = forumdao.getForumByID(id);
@@ -63,7 +57,25 @@
 <body>
     <%@include  file="header.jsp" %>
 
+    <div id="titleArea">
+        <% String title = f1.getTitle();%>
+        <h1><%=(title.substring(0, 1).toUpperCase() + title.substring(1))%></h1>
+
+    </div>
+
+    <div id="buttonContainer">
+        <form action="makeTextPost.jsp" method="post" id="buttonCreateForm">
+            <input type="hidden" value="<%=id%>" name="forumID">
+            <input type="submit"  id="btnTextPost" value="Create new text post">
+        </form>
+            <form action="makeLinkPost.jsp" method="post" id="buttonLink">    
+                <button type="button" id="btnLinkPost" value="Create new link post" onclick="window.location.href = 'makeLinkPost.jsp'"> Make new link post </button>
+            </form>
+    </div>
+    
     <div id="spacing"/>
+    
+    <br>
 
     <%
         for (Post post : posts) {
@@ -79,14 +91,7 @@
     </div>
     <% }%>
 
-    <div id="buttonContainer">
-        <form action="makeTextPost.jsp" method="post" id="buttonCreateForm">
-            <input type="hidden" value="<%=id%>" name="forumID">
-            <input type="submit"  id="btnTextPost" value="Create new text post">
-
-        </form>
-        <button type="button" id="btnLinkPost" value="Create new link post" onclick="window.location.href = 'makeLinkPost.jsp'"> Make new link post </button>
-    </div>
+    
 
 </body>
 </html>

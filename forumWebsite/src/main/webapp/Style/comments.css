@@ -54,14 +54,16 @@ body{
     height:40px;
     margin-left:10px;
     position:absolute;
-    margin-top:-640px;
     transition:0.5s;
+    margin-top:-208%;
 }
 
 #postComment:hover{
     transition:0.5s;
     color:#76e291;
 }
+
+
 
 #formPost{
     width:300px;
@@ -71,20 +73,57 @@ body{
     margin-left:150px;
 }
 .response{
-    margin-top:10px;
-    min-height:60px;
-    width:70%;
+    position:static;
+    height:100%;
+    width:90%;
     background-color:#1f1f21;
-    box-shadow: 5px 10px #1a1b1c;
+    margin-top:10px;
     margin-left:10%;
-    margin-top:5%;
-    padding:10px;
-}
-
-.comment{
-    
 }
 
 .sender{
-    margin-top:-100px;
+    position:absolute;
+    margin-top:-2%;
+    margin-left:5%;
+    color:#76e291;
+}
+
+.commentReply{
+    margin-left:5%;
+}
+
+#editPost{
+    margin-left:20%;
+}
+
+#editPost:hover{
+    transition:0.5s;
+    color:#76e291;
+}
+
+#deletePost{
+   
+    margin-left:27%;
+}
+
+#deletePost:hover{
+    transition:0.5s;
+    color:#76e291;
+}
+
+#op{
+    color:#76e291;
+}
+
+.actionButton{
+     background-color: rgba(255, 0, 0, 0);
+    color:white;
+    border-style:none;
+    font-size:12px;
+    width:100px;
+    height:40px;
+    margin-left:10px;
+    position:absolute;
+    transition:0.5s;
+    margin-top:-2%;
 }

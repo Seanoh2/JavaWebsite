@@ -94,14 +94,15 @@ body{
 
 .op{
     position:absolute;
-    margin-left:140px;
+    margin-left:3%;
     margin-top:55px;
     transition:0.5s;
+    color:#76e291;
 }
 
 .op:hover{
     transition:0.5s;
-    color:#76e291;
+    color:white;
 }
 .rating{
     position:absolute;
@@ -135,4 +136,10 @@ body{
     position:absolute;
     margin-top:-115px;
     margin-left:45%;
+}
+
+#buttonContainer{
+    position:absolute;
+    margin-left:37%;
+    margin-top:-2%;
 }
