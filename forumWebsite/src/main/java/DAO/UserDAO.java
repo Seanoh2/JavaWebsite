@@ -138,6 +138,50 @@ public class UserDAO extends DAO implements UserDAOInterface {
         }
         return userList;
     }
+    
+    public ArrayList<User> getAllUsers() {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        User u = null;
+        ArrayList<User> userList = new ArrayList();
+
+        try {
+            conn = getConnection();
+
+            String query = "SELECT * FROM users";
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                u = new User();
+                u.setUserID(rs.getInt("userID"));
+                u.setEmail(rs.getString("email"));
+                u.setPassword(rs.getString("password"));
+                u.setFirstName(rs.getString("firstName"));
+                u.setLastName(rs.getString("lastName"));
+                u.setIsAdmin(rs.getBoolean("isAdmin"));
+                userList.add(u);
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception occured in the getAllUsers() method: " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    freeConnection(conn);
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception occured in the finally section of the getAllUsers() method: " + e.getMessage());
+            }
+        }
+        return userList;
+    }
 
     /**
      * This will check the database for a user with userID of the param and
@@ -237,6 +281,51 @@ public class UserDAO extends DAO implements UserDAOInterface {
                 }
             } catch (SQLException e) {
                 System.out.println("Exception occured in the finally section in the addUser() method");
+            }
+        }
+        if (rs > 0) {
+            result = true;
+        } else {
+            result = false;
+        }
+
+        return result;
+
+    }
+    
+    public boolean deleteUser(int id) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        int rs = 0;
+        Boolean result = null;
+
+        try {
+            conn = getConnection();
+            String query = "DELETE FROM users WHERE userID = ?";
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            rs = ps.executeUpdate();
+        } catch (MySQLIntegrityConstraintViolationException e) {
+            System.out.println("Constraint Exception occurred: " + e.getMessage());
+            // Set the rowsAffected to -1, this can be used as a flag for the display section
+            rs = -1;
+
+        } catch (SQLException se) {
+            System.out.println("SQL Exception occurred: " + se.getMessage());
+            se.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Exception occurred: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    freeConnection(conn);
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception occured in the finally section in the deleteUser() method");
             }
         }
         if (rs > 0) {

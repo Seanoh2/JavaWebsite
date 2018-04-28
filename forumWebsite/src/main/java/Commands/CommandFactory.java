@@ -67,6 +67,10 @@ public class CommandFactory {
                 case "sendComment":
                     command = new SendCommentCommand();
                     break;
+                
+                case "deleteUser":
+                    command = new DeleteUserCommand();
+                    break;
                     
                 default:
                     command = new NoValidActionCommand();

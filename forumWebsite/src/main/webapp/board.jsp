@@ -63,16 +63,20 @@
 
     <%
         for (Post post : posts) {
-            int score = Integer.parseInt(scores.get(post.getPostID()).toString());
+            Object rating = scores.get(post.getPostID());
+            if(rating == null) {
+                rating = "0";
+            } 
+            int score = Integer.parseInt(rating.toString());
     %>     
     <div class="postContainer">
         <a class="title" href=" comments.jsp?ID=<%=post.getPostID()%>"><%=post.getTitle()%></a>
         <p class="content"> <%=post.getContent()%> </p>
         <a href="../profile.jsp?<%=post.getPoster().getUserID()%>" class="op"> <%=post.getPoster().getFirstName() + " " + post.getPoster().getLastName()%> </a>
         <div class="rating">
-            <button type="button" class="ratingButton" data-post="<%=post.getPostID()%>" data-user="<%=user.getUserID()%>" value="1"> &#x2b; </button>
+            <input type="checkbox" class="ratingButton" data-post="<%=post.getPostID()%>" data-user="<%=user.getUserID()%>" data-value="1"> &#x2b; </button>
             <p id="ratingScore<%=post.getPostID()%>"><%=score%></p>
-            <button type="button" class="ratingButton" data-post="<%=post.getPostID()%>" data-user="<%=user.getUserID()%>" value="-1"> &#8722; </button>
+            <input type="checkbox" class="ratingButton" data-post="<%=post.getPostID()%>" data-user="<%=user.getUserID()%>" data-value="-1"> &#8722; </button>
         </div>
     </div>
     <% }%>
