@@ -456,7 +456,7 @@ public class UserDAO extends DAO implements UserDAOInterface {
         PreparedStatement ps = null;
         int rs = 0;
         User temp = null;
-        UserDAO userDAO = new UserDAO("librarydatabase");
+        UserDAO userDAO = new UserDAO("forumdatabase");
 
         temp = userDAO.findUserByID(id);
         if (temp == null) {
@@ -495,7 +495,7 @@ public class UserDAO extends DAO implements UserDAOInterface {
     public boolean updatePassword(String password, int userID) {
         Connection conn = null;
         PreparedStatement ps = null;
-        EmailDAO emailDao = new EmailDAO("librarydatabase");
+        EmailDAO emailDao = new EmailDAO("forumdatabase");
         int rs = 0;
         Boolean result = false;
 
@@ -544,6 +544,66 @@ public class UserDAO extends DAO implements UserDAOInterface {
         if (rs > 0) {
             result = true;
             emailDao.removeRecovereyLog(userID);
+        } else {
+            result = false;
+        }
+
+        return result;
+
+    }
+    
+    public boolean updateUser(User u1) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        int rs = 0;
+        Boolean result = false;
+
+        try {
+            conn = getConnection();
+            String query = "UPDATE users SET FirstName=?,LastName=?,Email=?,isAdmin=? WHERE UserID=?";
+            ps = conn.prepareStatement(query);
+
+            // Fill in the blanks, i.e. parameterize the query
+            ps.setString(1, u1.getFirstName());
+            ps.setString(2, u1.getLastName());
+            ps.setString(3, u1.getEmail());
+            ps.setBoolean(4, u1.getIsAdmin());
+            ps.setInt(5, u1.getUserID());
+
+            // Execute the query
+            rs = ps.executeUpdate();
+
+        } catch (MySQLIntegrityConstraintViolationException e) {
+            System.out.println("Constraint Exception occurred: " + e.getMessage());
+            // Set the rowsAffected to -1, this can be used as a flag for the display section
+            rs = -1;
+
+        } catch (SQLException se) {
+            System.out.println("SQL Exception occurred: " + se.getMessage());
+            se.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Exception occurred: " + e.getMessage());
+            e.printStackTrace();
+        } // Now that the program has completed its database access component, 
+        // close the open access points (resultset, preparedstatement, connection)
+        // Remember to close them in the OPPOSITE ORDER to how they were opened
+        // Opening order: Connection -> PreparedStatement -> ResultSet
+        // Closing order: ResultSet -> PreparedStatement -> Connection
+        finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    freeConnection(conn);
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception occured in the finally section in the updateUser() method");
+            }
+        }
+
+        if (rs > 0) {
+            result = true;
         } else {
             result = false;
         }

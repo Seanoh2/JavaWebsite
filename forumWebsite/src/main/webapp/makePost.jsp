@@ -17,6 +17,8 @@
         
         <title>Make Text Post</title>
          <%@include  file="header.jsp" %>
+         <%String forumID = request.getParameter("forumID");%>
+         <%String islink = request.getParameter("isLink");%>
     </head>
     
     <body>
@@ -28,9 +30,13 @@
                 <input type="hidden" value="addPost" name="action">
                 <input type="text" id="title" placeholder="title" name="title"/>
                 <br>
+                <% if(Boolean.valueOf(islink)) { %>
                  <textarea rows="4" cols="50" id="content" placeholder="content" name="content"> </textarea> 
-                <input type="hidden" value="<%=request.getParameter("forumID")%>" name="forumID">
-                
+                 <% } else { %>
+                <input type="url" name="content" id="content" placeholder="Please enter URL">
+                <% } %>
+                <input type="hidden" value="<%=forumID%>" name="forumID">
+                <input type="hidden" value="<%=islink%>" name="isLInk">
                 <br>
                 <button type="submit" value="submit" id="submitButton"> Submit </button>
             </form>

@@ -38,7 +38,11 @@
             <td><%=user.getEmail()%></td>
             <td><%=user.getIsAdmin()%></td>
             <td>
-                placeholder
+                <form action="FrontController" method="post">
+                    <input type="hidden" name="userID" value="<%=user.getUserID()%>">
+                    <input type="hidden" name="action" value="updateUser">
+                    <input type="submit" value="Update">
+                </form>
             </td>
             <td>
                 <form action="FrontController" method="post">
@@ -47,7 +51,6 @@
                     <input type="submit" value="Delete">
                 </form>
             </td>
-            <td></td>
         </tr>       
         <% } %>
         </table>

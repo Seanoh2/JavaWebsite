@@ -27,61 +27,69 @@
             ForumDAO forumdao = new ForumDAO("forumdatabase");
             PostDAO postdao = new PostDAO("forumdatabase");
             RatingDAO ratingdao = new RatingDAO("forumdatabase");
-            
+
             Forum f1 = forumdao.getForumByID(id);
-            User user = (User)session.getAttribute("user");
-            
+            User user = (User) session.getAttribute("user");
+
             ArrayList<Post> posts = postdao.getPostsByForum(id);
             HashMap scores = ratingdao.getRatingsByForum();
         %>                
-    <title>/<%= f1.getTitle()%>/</title>
+        <title>/<%= f1.getTitle()%>/</title>
 
 
-</head>
-<body>
-    <%@include  file="header.jsp" %>
+    </head>
+    <body>
+        <%@include  file="header.jsp" %>
 
-    <div id="titleArea">
-        <% String title = f1.getTitle();%>
-        <h1><%=(title.substring(0, 1).toUpperCase() + title.substring(1))%></h1>
+        <div id="titleArea">
+            <% String title = f1.getTitle();%>
+            <h1><%=(title.substring(0, 1).toUpperCase() + title.substring(1))%></h1>
 
-    </div>
-
-    <div id="buttonContainer">
-        <form action="makeTextPost.jsp" method="post" id="buttonCreateForm">
-            <input type="hidden" value="<%=id%>" name="forumID">
-            <input type="submit"  id="btnTextPost" value="Create new text post">
-        </form>
-            <form action="makeLinkPost.jsp" method="post" id="buttonLink">    
-                <button type="button" id="btnLinkPost" value="Create new link post" onclick="window.location.href = 'makeLinkPost.jsp'"> Make new link post </button>
-            </form>
-    </div>
-    
-    <div id="spacing"/>
-    
-    <br>
-
-    <%
-        for (Post post : posts) {
-            Object rating = scores.get(post.getPostID());
-            if(rating == null) {
-                rating = "0";
-            } 
-            int score = Integer.parseInt(rating.toString());
-    %>     
-    <div class="postContainer">
-        <a class="title" href=" comments.jsp?ID=<%=post.getPostID()%>"><%=post.getTitle()%></a>
-        <p class="content"> <%=post.getContent()%> </p>
-        <a href="../profile.jsp?<%=post.getPoster().getUserID()%>" class="op"> <%=post.getPoster().getFirstName() + " " + post.getPoster().getLastName()%> </a>
-        <div class="rating">
-            <input type="checkbox" class="ratingButton" data-post="<%=post.getPostID()%>" data-user="<%=user.getUserID()%>" data-value="1"> &#x2b; </button>
-            <p id="ratingScore<%=post.getPostID()%>"><%=score%></p>
-            <input type="checkbox" class="ratingButton" data-post="<%=post.getPostID()%>" data-user="<%=user.getUserID()%>" data-value="-1"> &#8722; </button>
         </div>
-    </div>
-    <% }%>
 
-    
+        <div id="buttonContainer">
+            <form action="makePost.jsp" method="post" id="buttonCreateForm">
+                <input type="hidden" value="<%=id%>" name="forumID">
+                <input type="hidden" value="false" name="isLink">
+                <input type="submit"  id="btnTextPost" value="Create new text post">
+            </form>
+            <form action="makePost.jsp" method="post" id="buttonCreateForm">
+                <input type="hidden" value="<%=id%>" name="forumID">
+                <input type="hidden" value="true" name="isLink">
+                <input type="submit"  id="btnLinkPost" value="Create new Link post">
+            </form>
 
-</body>
+        </div>
+
+        <div id="spacing"/>
+
+        <br>
+
+        <%
+            for (Post post : posts) {
+                Object rating = scores.get(post.getPostID());
+                if (rating == null) {
+                    rating = "0";
+                }
+                int score = Integer.parseInt(rating.toString());
+        %>     
+        <div class="postContainer">
+            <% if(post.isIsLink()) { %>
+            <a class="title" href="<%=post.getContent()%>"><%=post.getTitle()%></a>
+            <% } else { %>
+            <a class="title" href=" comments.jsp?ID=<%=post.getPostID()%>"><%=post.getTitle()%></a>
+            <% } %>
+            <p class="content"> <%=post.getContent()%> </p>
+            <a href="../profile.jsp?<%=post.getPoster().getUserID()%>" class="op"> <%=post.getPoster().getFirstName() + " " + post.getPoster().getLastName()%> </a>
+            <div class="rating">
+                <input type="checkbox" class="ratingButton" data-post="<%=post.getPostID()%>" data-user="<%=user.getUserID()%>" data-value="1"> &#x2b; </button>
+                <p id="ratingScore<%=post.getPostID()%>"><%=score%></p>
+                <input type="checkbox" class="ratingButton" data-post="<%=post.getPostID()%>" data-user="<%=user.getUserID()%>" data-value="-1"> &#8722; </button>
+            </div>
+        </div>
+        <% }%>
+
+
+
+    </body>
 </html>
