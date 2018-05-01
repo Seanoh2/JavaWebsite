@@ -1,0 +1,49 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 01-May-2018, 19:07:56
+    Author     : tomwa
+*/
+
+#messageContainer{
+    margin-top:15%;
+    position:absolute;
+    margin-left:30%;
+    height:40%;
+    width:40%;
+    background-color:#1f1f21;
+    box-shadow: 5px 10px #1a1b1c;
+}
+
+#sUserID{
+    width:60%;
+    margin-top:10%;
+    margin-left:20%;
+}
+
+#content{
+    margin-top:10%;
+    margin-left:20%;
+    width:60%;
+    height:20%;
+}
+
+#btnSendMessage{
+    height:30px;
+    width:100px;
+    margin-left:40%;
+    background-color: rgba(255, 0, 0, 0);
+    border: solid;
+    border-color: white;
+    border-width:2px;
+    color: white;
+}
+
+#messageHeader{
+    color:white;
+    margin-left:38%;
+    position:absolute;
+}

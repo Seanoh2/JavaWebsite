@@ -35,6 +35,8 @@
         <a href="board.jsp?ID=3" id="movies"> /movies/ </a>
         <a href="board.jsp?ID=5" id="sports"> /sports/ </a>
     </div>
+    
+    <a href="sendMessage.jsp" id="sendMessageLink">Send Message </a>
 
     <%
         User loggedIn = (User) session.getAttribute("user");
