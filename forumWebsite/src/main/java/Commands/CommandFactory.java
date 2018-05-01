@@ -72,6 +72,10 @@ public class CommandFactory {
                     command = new DeleteUserCommand();
                     break;
                     
+                case "editPost":
+                    command = new EditPostCommand();
+                    break;
+                    
                 default:
                     command = new NoValidActionCommand();
                     break;

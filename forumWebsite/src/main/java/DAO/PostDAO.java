@@ -286,4 +286,48 @@ public class PostDAO extends DAO {
 
     }
     
+    public boolean editPost(Post p) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        int rs = 0;
+        Boolean result = null;
+
+        try {
+            conn = getConnection();
+            
+            String query = "UPDATE POSTS SET Title = ?, Content = ? WHERE PostID = ?";
+            ps = conn.prepareStatement(query);
+            ps.setString(1, p.getTitle());
+            ps.setString(2, p.getContent());
+            ps.setInt(3, p.getPostID());
+
+            rs = ps.executeUpdate();
+
+        } catch (SQLException se) {
+            System.out.println("SQL Exception occurred: " + se.getMessage());
+            se.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Exception occurred: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    freeConnection(conn);
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception occured in the finally section in the editPost() method");
+            }
+        }
+        if (rs > 0) {
+            result = true;
+        } else {
+            result = false;
+        }
+
+        return result;
+
+    }
 }
