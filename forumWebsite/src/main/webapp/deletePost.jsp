@@ -17,6 +17,11 @@
         <%@include file="header.jsp" %>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <form action="FrontController" method="post" id="deletePost">
+                <input type="hidden" value="deletePost" name="action">
+                <input type="hidden" value="<%=request.getAttribute("postID")%>" name="forumID">
+                <p> delete post? </p>
+                <button type="submit" value="submit" id="submitButton"> Submit </button>
+        </form>
     </body>
 </html>

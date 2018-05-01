@@ -8,3 +8,10 @@ and open the template in the editor.
     Author     : tomwa
 */
 
+#deletePost{
+    margin-top:20%;
+    height:300px;
+    width:300px;
+    position:absolute;
+    margin-left:45%;
+}

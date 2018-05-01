@@ -8,3 +8,12 @@ and open the template in the editor.
     Author     : tomwa
 */
 
+#editTextPost{
+    position:absolute;
+    margin-top:300px;
+    border-style:solid;
+    border-color:white;
+    border-width:1px;
+    height:400px;
+    width:500px;
+}

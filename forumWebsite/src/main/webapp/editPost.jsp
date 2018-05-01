@@ -17,6 +17,16 @@
         <%@include file="header.jsp" %>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        
+        <form action="FrontController" method="post" id="editTextPost">
+                <input type="hidden" value="editTextPost" name="action">
+                <input type="hidden" value="<%=request.getAttribute("postID")%>" name="forumID">
+                <input type="text" id="title" placeholder="title" name="title"/>
+                <br>
+                <textarea rows="4" cols="50" id="content" placeholder="content" name="content"> </textarea> 
+                <br>
+                <button type="submit" value="submit" id="submitButton"> Submit </button>
+            </form>
+        
     </body>
 </html>
