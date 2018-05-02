@@ -6,7 +6,6 @@
 package Commands;
 
 import DAO.PostDAO;
-import DAO.UserDAO;
 import DTOS.Post;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,13 +23,18 @@ public class EditPostCommand implements Command{
         // Get the information entered into the form by the user
         // Get the parameters from the previous page       
         int postid = Integer.parseInt(request.getParameter("postID"));
+        String title = request.getParameter("title");
+        String content = request.getParameter("content");
 
         if (postid != 0) {
             //Call your DAO method 
             PostDAO postdao = new PostDAO("forumdatabase");
             Post p1 = postdao.getPostByID(postid);
+            p1.setTitle(title);
+            p1.setContent(content);
+            
             if (postdao.editPost(p1)) {
-                forwardToJsp = "postEditSuccess.jsp";
+                forwardToJsp = "comments.jsp?ID=" + p1.getPostID();
             } else {
                 String errorMessage = "Invalid edit.";
                 session.setAttribute("errorMessage", errorMessage);

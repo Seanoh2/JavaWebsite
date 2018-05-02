@@ -61,7 +61,7 @@ Author     : Seanoh
                     <input type='submit' value='Edit' id='editPost' class='actionButton'> 
                 </form>
                 <form action="FrontController" method="post" id="formDeletePost">
-                    <input type="hidden" name="postID" value="<%=+currentPost.getPostID()%>">
+                    <input type="hidden" name="postID" value="<%=currentPost.getPostID()%>">
                     <input type="hidden" name="action" value="deletePost">
                     <input type="submit" value="Delete" id="deletePost" class="actionButton">
                 </form>
