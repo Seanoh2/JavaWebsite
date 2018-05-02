@@ -13,11 +13,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Edit User</title>
 
-        <!--
-        <link rel="stylesheet" type="text/css" href="Style/register.css">
+        
+        <link rel="stylesheet" type="text/css" href="Style/editUser.css">
         <link rel="stylesheet" type="text/css" href="Style/siteWide.css">
         <link rel=stylesheet" type="text/css" href="Style/header.css"> 
-        -->
+        
 
 
         <%             UserDAO userdao = new UserDAO("forumdatabase");
@@ -27,20 +27,26 @@
 
     </head>
     <body>
-        <form action="FrontController" method="post" id="container">
+        <%@include  file="header.jsp" %>
+        <form action="FrontController" method="post" id="containerEditUser">
             <input type="hidden" value="editUser" name="action">
-            <input type="text" name="email" placeholder="email" value="<%=edit.getEmail()%>" class="txtField">
             <br>
+            <label> Email: </label>
+            <input type="text" name="email" placeholder="email" value="<%=edit.getEmail()%>" class="txtField" id="editEmail">
+            <br>
+            <br>
+            <label> First Name: </label>
             <input type="text" name="firstName" placeholder="first name" value="<%=edit.getFirstName()%>" class="txtField">
             <br>
+            <br>
+            <label> Last Name: </label>
             <input type="text" name="lastName" placeholder="last name" value="<%=edit.getLastName()%>" class="txtField">
             <br>
 
             <% if (edit.getIsAdmin()) { %>
-            <p>Yes</p>
+            <p>Admin</p>
             <input type="radio" name="isAdmin" value="true" checked>
-            <br>
-            <p>No</p>
+            <p>Not admin</p>
             <input type="radio" name="isAdmin" value="false">
             <% } else { %>
             <p>Yes</p>
