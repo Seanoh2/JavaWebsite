@@ -24,9 +24,9 @@ Author     : Seanoh
         <%@include  file="header.jsp" %>
 
         <%PostDAO postdao = new PostDAO("forumdatabase");
-        Post currentPost = postdao.getPostByID(Integer.parseInt(request.getParameter("ID")));
-        CommentDAO commentdao = new CommentDAO("forumdatabase");
-        ArrayList<Comment> comments = commentdao.getCommentsByPostID(Integer.parseInt(request.getParameter("ID")));
+            Post currentPost = postdao.getPostByID(Integer.parseInt(request.getParameter("ID")));
+            CommentDAO commentdao = new CommentDAO("forumdatabase");
+            ArrayList<Comment> comments = commentdao.getCommentsByPostID(Integer.parseInt(request.getParameter("ID")));
         %>
 
         <div id="postContainer">
@@ -34,13 +34,13 @@ Author     : Seanoh
 
             <div id="content">
                 <% if (currentPost.isIsLink()) {
-                    if (currentPost.getContent().contains("watch?v") == true) {%>
+                        if (currentPost.getContent().contains("watch?v") == true) {%>
                 <p><%=currentPost.getContent()%></p>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/<%=(currentPost.getContent()).substring((currentPost.getContent()).lastIndexOf('=')+1)%>"  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/<%=(currentPost.getContent()).substring((currentPost.getContent()).lastIndexOf('=') + 1)%>"  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     <% } else {%>
                 <a href="<%=currentPost.getContent()%>" target="_blank"><%=currentPost.getContent()%></a>
                 <% }
-                } else { 
+                } else {
                 %>
                 <p><%=currentPost.getContent()%></p>
                 <% User user1 = (currentPost.getPoster());%>
@@ -55,16 +55,18 @@ Author     : Seanoh
                 <%
                     User currentUser = (User) session.getAttribute("user");
                     if (currentUser.getUserID() == (currentPost.getPoster()).getUserID()) {
-                        out.println("<form action='editPost.jsp' method='post' id='formEditPost'><input type='hidden' value=' + currentPost.getPostID() name='postID'><input type='submit' value='Edit' id='editPost' class='actionButton'> </form>");
-                        
                 %>
-                                <form action="FrontController" method="post" id="formDeletePost">
-                                <input type="hidden" name="postID" value="<%=+currentPost.getPostID()%>">
-                                <input type="hidden" name="action" value="deletePost">
-                                <input type="submit" value="Delete" id="deletePost" class="actionButton">
-                                 </form>
-                                
-                <%                
+                <form action='editPost.jsp' method='post' id='formEditPost'>
+                    <input type='hidden' value='<%=currentPost.getPostID()%>' name='postID'>
+                    <input type='submit' value='Edit' id='editPost' class='actionButton'> 
+                </form>
+                <form action="FrontController" method="post" id="formDeletePost">
+                    <input type="hidden" name="postID" value="<%=+currentPost.getPostID()%>">
+                    <input type="hidden" name="action" value="deletePost">
+                    <input type="submit" value="Delete" id="deletePost" class="actionButton">
+                </form>
+
+                <%
                     }
 
                 %>

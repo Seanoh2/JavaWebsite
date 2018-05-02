@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $(".ratingButton").click(function () {
+    $(":input").click(function () {
         var post = $(this).data('post');
         var user = $(this).data('user');
         var rating = $(this).data('value');
@@ -10,8 +10,10 @@ $(document).ready(function () {
         } else {
             if (rating === 1) {
                 ratingView = -1;
-            } else {
+            } else if (rating === -1){
                 ratingView = 1;
+            } else {
+                ratingView = 0;
             }
             rating = 0;
         }
