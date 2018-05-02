@@ -4,6 +4,8 @@
     Author     : Sean
 --%>
 
+<%@page import="DTOS.Post"%>
+<%@page import="DAO.PostDAO"%>
 <%@page import="DTOS.User"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="DAO.UserDAO"%>
@@ -18,6 +20,8 @@
         <%
             UserDAO userdao = new UserDAO("forumdatabase");
             ArrayList<User> userList = userdao.getAllUsers();
+            PostDAO postdao = new PostDAO("forumdatabase");
+            ArrayList<Post> postList = postdao.getAllPosts();
         %>
         <table>
             <tr>
@@ -53,6 +57,35 @@
             </td>
         </tr>       
         <% } %>
+        
+        </table>
+        
+        <table>
+            <th> Post id </th>
+            <th> user id </th>
+            <th> forum id </th>
+            <th> title </th>
+            <th> content </th>
+            
+            <% for (Post post: postList){ %>
+            <tr>
+                <td><%=post.getPostID()%></td>
+                <td><%=post.getPoster().getUserID()%></td>
+                <td><%=post.getForumID()%></td>
+                <td><%=post.getTitle()%></td>
+                <td><%=post.getContent()%></td>
+            <td>
+                <form action="FrontController" method="post">
+                    <input type="hidden" name="postID" value="<%=post.getPostID()%>">
+                    <input type="hidden" name="action" value="deletePost">
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+        </tr>       
+        <% } %>
+        
+        
+            
         </table>
     </body>
 </html>

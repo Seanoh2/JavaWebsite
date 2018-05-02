@@ -50,7 +50,15 @@
        } else{
             out.println("<p id='loggedIn'> Hello </p> <a href='profile.jsp' id='loggedInName'>" + loggedIn.getEmail() + "</a>");
         }
-    %>
+
+        if (loggedIn.getIsAdmin()){
+            
+        %>
+        <a href="adminPage.jsp" class="adminLink">Admin Controls</a>
+        
+        <%
+        }    
+        %>
         
     
          
