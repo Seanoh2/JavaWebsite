@@ -1,7 +1,7 @@
-    <%-- 
-    Document   : Comments
-    Created on : 15-Feb-2018, 14:01:46
-    Author     : Seanoh
+<%-- 
+Document   : Comments
+Created on : 15-Feb-2018, 14:01:46
+Author     : Seanoh
 --%>
 
 <%@page import="DTOS.User"%>
@@ -33,49 +33,48 @@
 
             <div id="content">
                 <% if (currentPost.isIsLink()) {%>
-                <% if (currentPost.getContent().contains("youtube.com") == true) { %>
-                <iframe width="420" height="315"
-                        src="<%=currentPost.getContent()%>">
-                </iframe>
-                <% } else { %>
-                <a href="<%=currentPost.getContent()%>"><%=currentPost.getTitle()%></a>
-                <% } 
+                <% if (currentPost.getContent().contains("watch?v") == true) {%>
+                <iframe width="500" height="315" src="http://www.google.ie" id="videoSource" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <% } else {%>
+                <a href="<%=currentPost.getContent()%>" target="_blank"><%=currentPost.getContent()%></a>
+                <% }
                 } else { 
                 %>
                 <p><%=currentPost.getContent()%></p>
-                <% User user1 =  (currentPost.getPoster());%>
+                <% User user1 = (currentPost.getPoster());%>
                 <a href="viewProfile.jsp?ID="<%=currentPost.getPoster().getUserID()%> id="op">-<%=user1.getEmail()%></a>
-                <% } %>
+                <% }%>
             </div>
-            <form action="sendComment.jsp" method="post" id="formPost">
-                <input type="hidden" value="<%=currentPost.getPostID()%>" name="postID">
-                <input type="submit" value="Post Comment" id="postComment" class="actionButton">
-            </form>
+            <div class="controlsContainer">
+                 <form action="sendComment.jsp" method="post" id="formPost">
+                    <input type="hidden" value="<%=currentPost.getPostID()%>" name="postID">
+                    <input type="submit" value="Post Comment" id="postComment" class="actionButton">
+                </form>
                 <%
-                    User currentUser = (User)session.getAttribute("user");
-                    if (currentUser.getUserID() == (currentPost.getPoster()).getUserID()){
+                    User currentUser = (User) session.getAttribute("user");
+                    if (currentUser.getUserID() == (currentPost.getPoster()).getUserID()) {
                         out.println("<form action='editPost.jsp' method='post' id='formEditPost'><input type='hidden' value=' + currentPost.getPostID() name='postID'><input type='submit' value='Edit' id='editPost' class='actionButton'> </form>");
                         out.println("<form action='deletePost.jsp' method='post' id='formDeletePost'><input type='hidden' value=' + currentPost.getPostID() name='postID'><input type='submit' value='Delete' id='deletePost' class='actionButton'> </form>");
                     }
-                    
+
                 %>
-               
-                
+            </div>   
+
         </div>
 
         <% for (Comment comment : comments) {
-           if (comment.getReceiver() == null) { 
-         %>
-            <% } else { %>
-            <div class="response">
-                <% }%>
-                
-                <p class="commentReply"><%=comment.getContent()%></p>
-                <br/>
-                <a class="sender" href="viewProfile.jsp?ID=<%=comment.getSender().getUserID()%>">-<%=comment.getSender().getFirstName()%></a>
-                
-            </div>
+                if (comment.getReceiver() == null) {
+        %>
+        <% } else { %>
+        <div class="response">
             <% }%>
-            
+
+            <p class="commentReply"><%=comment.getContent()%></p>
+            <br/>
+            <a class="sender" href="viewProfile.jsp?ID=<%=comment.getSender().getUserID()%>">-<%=comment.getSender().getFirstName()%></a>
+
+        </div>
+        <% }%>
+
     </body>
 </html>

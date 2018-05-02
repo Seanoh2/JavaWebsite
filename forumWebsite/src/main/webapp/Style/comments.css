@@ -53,9 +53,8 @@ body{
     width:100px;
     height:40px;
     margin-left:10px;
-    position:absolute;
     transition:0.5s;
-    margin-top:-208%;
+    position:absolute;
 }
 
 #postComment:hover{
@@ -68,8 +67,7 @@ body{
 #formPost{
     width:300px;
     height:50px;
-    position:absolute;
-    margin-top:600px;
+    margin-top:30px;
     margin-left:150px;
 }
 .response{
@@ -94,6 +92,7 @@ body{
 
 #editPost{
     margin-left:20%;
+    margin-top:-78px;
 }
 
 #editPost:hover{
@@ -102,7 +101,7 @@ body{
 }
 
 #deletePost{
-   
+   margin-top:-77px;
     margin-left:27%;
 }
 
@@ -126,4 +125,13 @@ body{
     position:absolute;
     transition:0.5s;
     margin-top:-2%;
+}
+
+.controlsContainer{
+    margin-top:5%;
+    height:40px;
+}
+
+#videoSource{
+    z-index: 1;
 }

@@ -17,7 +17,7 @@ and open the template in the editor.
     margin-left:20px;
     min-width:300px;    
     font-size:10px;
-    min-height:500px;
+    min-height:400px;
 }
 
 .change{
@@ -56,8 +56,8 @@ and open the template in the editor.
     background-color:#1f1f21;
     box-shadow: 5px 10px #1a1b1c;
     margin-top:200px;
-    margin-left:470px;
-    min-width:700px;
+    margin-left:400px;
+    min-width:600px;
     min-height:125px;
 }
 
@@ -82,4 +82,16 @@ and open the template in the editor.
     font-family:fantasy;
     font-size:16px;
     margin-top:20px;
+}
+
+#messages{
+    position:absolute;
+    font-family: fantasy;
+    background-color:#1f1f21;
+    box-shadow: 5px 10px #1a1b1c;
+    margin-top:140px;
+    margin-left:80%;
+    min-width:200px;    
+    font-size:10px;
+    min-height:300px;   
 }

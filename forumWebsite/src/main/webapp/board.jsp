@@ -75,7 +75,7 @@
         %>     
         <div class="postContainer">
             <% if(post.isIsLink()) { %>
-            <a class="title" href="<%=post.getContent()%>"><%=post.getTitle()%></a>
+            <a class="title" href="<%=post.getContent()%> " target='_blank'><%=post.getTitle()%></a>
             <% } else { %>
             <a class="title" href="comments.jsp?ID=<%=post.getPostID()%>"><%=post.getTitle()%></a>
             <% } %>

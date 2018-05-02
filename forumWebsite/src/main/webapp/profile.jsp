@@ -68,6 +68,8 @@
         %>
 
         <div id="messages">
+            <center><h2 class="headings">Your messages</h2></center>
+            <a href="sendMessage.jsp" id="sendMessageLink">Send Message </a>
             <% for (Message message : messages) {%>
             <p><%=message.getReciever().getFirstName()%><p>
             <p><%=message.getContent()%></p>

@@ -31,7 +31,7 @@
                 <input type="text" id="title" placeholder="title" name="title"/>
                 <br>
                 <% if (Boolean.valueOf(islink)) { %>
-                <input type="url" name="content" id="content" placeholder="Please enter URL">
+                <input type="url" name="content" id="contentLink" placeholder="Please enter URL">
                 <% } else { %>
                 <textarea rows="4" cols="50" id="content" placeholder="content" name="content"> </textarea>
                 <% }%>
