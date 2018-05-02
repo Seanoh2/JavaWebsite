@@ -81,7 +81,7 @@ public class PostDAO extends DAO {
         try {
             conn = getConnection();
 
-            String query = "SELECT * FROM forum WHERE ForumID = ?";
+            String query = "SELECT * FROM posts WHERE ForumID = ?";
             ps = conn.prepareStatement(query);
             ps.setInt(1, forumID);
             rs = ps.executeQuery();
@@ -129,7 +129,7 @@ public class PostDAO extends DAO {
         try {
             conn = getConnection();
 
-            String query = "SELECT * FROM forum WHERE UserID = ?";
+            String query = "SELECT * FROM posts WHERE UserID = ?";
             ps = conn.prepareStatement(query);
             ps.setInt(1, userID);
             rs = ps.executeQuery();
@@ -175,7 +175,7 @@ public class PostDAO extends DAO {
 
         try {
             conn = getConnection();
-            String query = "SELECT * FROM post WHERE postID = ?";
+            String query = "SELECT * FROM posts WHERE postID = ?";
             ps = conn.prepareStatement(query);
             ps.setInt(1, postID);
             rs = ps.executeQuery();
@@ -268,7 +268,7 @@ public class PostDAO extends DAO {
         try {
             conn = getConnection();
 
-            String query = "UPDATE POSTS SET Title = ?, Content = ? WHERE PostID = ?";
+            String query = "UPDATE posts SET Title = ?, Content = ? WHERE PostID = ?";
             ps = conn.prepareStatement(query);
             ps.setString(1, p.getTitle());
             ps.setString(2, p.getContent());

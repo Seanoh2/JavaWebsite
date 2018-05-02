@@ -191,6 +191,7 @@ public class UserDAO extends DAO implements UserDAOInterface {
      * this parameter
      * @return User object which matches the ID of the param
      */
+    @Override
     public User findUserByID(int userID) {
         Connection conn = null;
         PreparedStatement ps = null;

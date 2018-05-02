@@ -86,7 +86,7 @@ public class CommentDAO extends DAO {
 
         try {
             conn = getConnection();
-            String query = "SELECT * FROM Comments WHERE ReceiverID = ?";
+            String query = "SELECT * FROM comments WHERE ReceiverID = ?";
             ps = conn.prepareStatement(query);
             ps.setInt(1, receiverID);
             rs = ps.executeQuery();
@@ -137,7 +137,7 @@ public class CommentDAO extends DAO {
 
         try {
             conn = getConnection();
-            String query = "SELECT * FROM Comments WHERE PostID = ?";
+            String query = "SELECT * FROM comments WHERE PostID = ?";
             ps = conn.prepareStatement(query);
             ps.setInt(1, postID);
             rs = ps.executeQuery();
