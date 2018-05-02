@@ -15,8 +15,10 @@ $(document).ready(function () {
             }
             rating = 0;
         }
-        
-         $('input[type="checkbox"]').not(this).prop('checked', false);
+
+        var ratingDiv = '#rating' + post.toString();
+        console.log(ratingDiv.toString());
+        $(ratingDiv.toString()).find(':input').not(this).prop('checked', false);
 
         $.ajax({
             url: "RatingServlet",

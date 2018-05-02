@@ -81,7 +81,7 @@
             <% } %>
             <p class="content"> <%=post.getContent()%> </p>
             <a href="../profile.jsp?<%=post.getPoster().getUserID()%>" class="op"> <%=post.getPoster().getFirstName() + " " + post.getPoster().getLastName()%> </a>
-            <div class="rating">
+            <div id="rating<%=post.getPostID()%>">
                 <input type="checkbox" class="ratingButton" data-post="<%=post.getPostID()%>" data-user="<%=user.getUserID()%>" data-value="1"> &#x2b; </button>
                 <p id="ratingScore<%=post.getPostID()%>"><%=score%></p>
                 <input type="checkbox" class="ratingButton" data-post="<%=post.getPostID()%>" data-user="<%=user.getUserID()%>" data-value="-1"> &#8722; </button>

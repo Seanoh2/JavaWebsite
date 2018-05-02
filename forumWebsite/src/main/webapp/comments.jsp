@@ -23,20 +23,21 @@ Author     : Seanoh
     <body>
         <%@include  file="header.jsp" %>
 
-        <%PostDAO postdao = new PostDAO("forumdatabase");%>
-        <%Post currentPost = postdao.getPostByID(Integer.parseInt(request.getParameter("ID")));%>
-        <%CommentDAO commentdao = new CommentDAO("forumdatabase");%>
-        <%ArrayList<Comment> comments = commentdao.getCommentsByPostID(Integer.parseInt(request.getParameter("ID")));%>
+        <%PostDAO postdao = new PostDAO("forumdatabase");
+        Post currentPost = postdao.getPostByID(Integer.parseInt(request.getParameter("ID")));
+        CommentDAO commentdao = new CommentDAO("forumdatabase");
+        ArrayList<Comment> comments = commentdao.getCommentsByPostID(Integer.parseInt(request.getParameter("ID")));
+        %>
 
         <div id="postContainer">
             <p id="title"><%=currentPost.getTitle()%></p>
 
             <div id="content">
-                <% if (currentPost.isIsLink()) {%>
-                <% if (currentPost.getContent().contains("watch?v") == true) {%>
+                <% if (currentPost.isIsLink()) {
+                    if (currentPost.getContent().contains("watch?v") == true) {%>
                 <p><%=currentPost.getContent()%></p>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/<%=(currentPost.getContent()).substring((currentPost.getContent()).lastIndexOf('=')+1)%>"  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                <% } else {%>
+                    <% } else {%>
                 <a href="<%=currentPost.getContent()%>" target="_blank"><%=currentPost.getContent()%></a>
                 <% }
                 } else { 
@@ -47,7 +48,7 @@ Author     : Seanoh
                 <% }%>
             </div>
             <div class="controlsContainer">
-                 <form action="sendComment.jsp" method="post" id="formPost">
+                <form action="sendComment.jsp" method="post" id="formPost">
                     <input type="hidden" value="<%=currentPost.getPostID()%>" name="postID">
                     <input type="submit" value="Post Comment" id="postComment" class="actionButton">
                 </form>
