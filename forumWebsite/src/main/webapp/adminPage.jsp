@@ -38,7 +38,7 @@
             <td><%=user.getEmail()%></td>
             <td><%=user.getIsAdmin()%></td>
             <td>
-                <form action="FrontController" method="post">
+                <form action="editUser.jsp" method="post">
                     <input type="hidden" name="userID" value="<%=user.getUserID()%>">
                     <input type="hidden" name="action" value="updateUser">
                     <input type="submit" value="Update">

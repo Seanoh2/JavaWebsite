@@ -77,7 +77,7 @@
             <% if(post.isIsLink()) { %>
             <a class="title" href="<%=post.getContent()%>"><%=post.getTitle()%></a>
             <% } else { %>
-            <a class="title" href=" comments.jsp?ID=<%=post.getPostID()%>"><%=post.getTitle()%></a>
+            <a class="title" href="comments.jsp?ID=<%=post.getPostID()%>"><%=post.getTitle()%></a>
             <% } %>
             <p class="content"> <%=post.getContent()%> </p>
             <a href="../profile.jsp?<%=post.getPoster().getUserID()%>" class="op"> <%=post.getPoster().getFirstName() + " " + post.getPoster().getLastName()%> </a>

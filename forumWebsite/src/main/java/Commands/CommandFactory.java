@@ -77,7 +77,11 @@ public class CommandFactory {
                     break;
                     
                 case "deletePost":
-                    command = new deletePostCommand();
+                    command = new DeletePostCommand();
+                    break;
+                    
+                case "editUser":
+                    command = new EditUserCommand();
                     break;
                     
                 default:

@@ -28,14 +28,13 @@ public class MakeTextPostCommand implements Command{
         User u1 = (User) session.getAttribute("user");
         int id = u1.getUserID();
         int forumID = Integer.parseInt(request.getParameter("forumID"));
-        boolean isLink = false;
+        boolean isLink = Boolean.parseBoolean(request.getParameter("isLink"));
         
         Post post1 = new Post(0, u1, forumID, isLink, title, content);
         
         boolean addpost = postdao.addPost(post1);
         
-        if(addpost){
-                        
+        if(addpost){                     
             forwardToJsp = "profile.jsp";
         } else {
                 //If any issues arised, they are not added and told so.
