@@ -29,6 +29,8 @@ public class MessageDAO extends DAO {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Message message = null;
+        User us = null;
+        User ur = null;
         ArrayList<Message> messages = new ArrayList();
 
         try {
@@ -38,11 +40,11 @@ public class MessageDAO extends DAO {
             ps = conn.prepareStatement(query);
             ps.setInt(1, UserID);
             rs = ps.executeQuery();
+            UserDAO userdao = new UserDAO("forumdatabase");
 
             while (rs.next()) {
-                UserDAO userdao = new UserDAO("forumdatabase");
-                User us = userdao.findUserByID(rs.getInt("SenderID"));
-                User ur = userdao.findUserByID(rs.getInt("ReceiverID"));
+                us = userdao.findUserByID(rs.getInt("SenderID"));
+                ur = userdao.findUserByID(rs.getInt("ReceiverID"));
                 
                 message = new Message(
                         rs.getInt("MessageID"),
@@ -81,6 +83,8 @@ public class MessageDAO extends DAO {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Message message = null;
+        User us = null;
+        User ur = null;
         ArrayList<Message> messages = new ArrayList();
 
         try {
@@ -90,11 +94,11 @@ public class MessageDAO extends DAO {
             ps = conn.prepareStatement(query);
             ps.setInt(1, UserID);
             rs = ps.executeQuery();
+            UserDAO userdao = new UserDAO("forumdatabase");
 
             while (rs.next()) {
-                UserDAO userdao = new UserDAO("forumdatabase");
-                User us = userdao.findUserByID(rs.getInt("SenderID"));
-                User ur = userdao.findUserByID(rs.getInt("ReceiverID"));
+                us = userdao.findUserByID(rs.getInt("SenderID"));
+                ur = userdao.findUserByID(rs.getInt("ReceiverID"));
                 
                 message = new Message(
                         rs.getInt("MessageID"),

@@ -30,6 +30,7 @@ public class PostDAO extends DAO {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Post p = null;
+        User poster = null;
         ArrayList<Post> postList = new ArrayList();
 
         try {
@@ -40,7 +41,7 @@ public class PostDAO extends DAO {
             UserDAO userdao = new UserDAO("forumdatabase");
 
             while (rs.next()) {
-                User poster = userdao.findUserByID(rs.getInt("UserID"));
+                poster = userdao.findUserByID(rs.getInt("UserID"));
                 p = new Post(
                         rs.getInt("PostID"),
                         poster,
@@ -76,6 +77,7 @@ public class PostDAO extends DAO {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Post p = null;
+        User poster = null;
         ArrayList<Post> postList = new ArrayList();
 
         try {
@@ -88,7 +90,7 @@ public class PostDAO extends DAO {
             UserDAO userdao = new UserDAO("forumdatabase");
 
             while (rs.next()) {
-                User poster = userdao.findUserByID(rs.getInt("UserID"));
+                poster = userdao.findUserByID(rs.getInt("UserID"));
                 p = new Post(
                         rs.getInt("PostID"),
                         poster,
@@ -124,6 +126,7 @@ public class PostDAO extends DAO {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Post p = null;
+        User poster = null;
         ArrayList<Post> postList = new ArrayList();
 
         try {
@@ -136,7 +139,7 @@ public class PostDAO extends DAO {
             UserDAO userdao = new UserDAO("forumdatabase");
 
             while (rs.next()) {
-                User poster = userdao.findUserByID(rs.getInt("UserID"));
+                poster = userdao.findUserByID(rs.getInt("UserID"));
                 p = new Post(
                         rs.getInt("PostID"),
                         poster,
@@ -172,6 +175,7 @@ public class PostDAO extends DAO {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Post post = null;
+        User poster = null;
 
         try {
             conn = getConnection();
@@ -182,7 +186,7 @@ public class PostDAO extends DAO {
             UserDAO userdao = new UserDAO("forumdatabase");
 
             while (rs.next()) {
-                User poster = userdao.findUserByID(rs.getInt("UserID"));
+                poster = userdao.findUserByID(rs.getInt("UserID"));
                 post = new Post(
                         rs.getInt("PostID"),
                         poster,

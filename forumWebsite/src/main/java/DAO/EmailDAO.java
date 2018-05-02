@@ -225,7 +225,7 @@ public class EmailDAO extends DAO {
         ResultSet rs = null;
         UserDAO userDao = new UserDAO("forumdatabase");
 
-        Email check = new Email();
+        Email check = null;
 
         try {
             conn = getConnection();
@@ -239,6 +239,7 @@ public class EmailDAO extends DAO {
             rs = ps.executeQuery();
 
             if (rs.next()) {
+                check = new Email();
                 check.setTime(rs.getDate("Time"));
                 check.setUser(userDao.findUserByID(rs.getInt("UserID")));
                 check.setUUID(rs.getString("UUID"));

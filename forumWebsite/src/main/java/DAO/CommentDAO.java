@@ -6,7 +6,6 @@
 package DAO;
 
 import DTOS.Comment;
-import DTOS.Password;
 import DTOS.Post;
 import DTOS.User;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
@@ -31,6 +30,9 @@ public class CommentDAO extends DAO {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Comment c = null;
+        Post p = null;
+        User us = null;
+        User ur = null;
         ArrayList<Comment> commentList = new ArrayList();
 
         try {
@@ -39,14 +41,10 @@ public class CommentDAO extends DAO {
             ps = conn.prepareStatement(query);
             ps.setInt(1, senderID);
             rs = ps.executeQuery();
+            PostDAO postdao = new PostDAO("forumdatabase");
+            UserDAO userdao = new UserDAO("forumdatabase");
 
-            while (rs.next()) {
-                PostDAO postdao = new PostDAO("forumdatabase");
-                UserDAO userdao = new UserDAO("forumdatabase");
-                
-                Post p = postdao.getPostByID(rs.getInt("PostID"));
-                User us = userdao.findUserByID(rs.getInt("SenderID"));
-                User ur = userdao.findUserByID(rs.getInt("ReceiverID"));
+            while (rs.next()) {           
                    c = new Comment(
                         rs.getInt("CommentID"),
                         p,
