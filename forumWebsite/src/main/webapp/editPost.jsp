@@ -29,7 +29,11 @@
                 <input type="hidden" value="<%=p.getPostID()%>" name="postID">
                 <input type="text" id="title" placeholder="title" name="title" value="<%=p.getTitle()%>"/>
                 <br>
-                <textarea rows="4" cols="50" id="content" placeholder="content" name="content"><%=p.getContent()%></textarea> 
+                <% if (Boolean.valueOf(p.isIsLink())) { %>
+                <input type="url" name="content" id="contentLink" placeholder="Please enter URL" value="<%=p.getContent()%>">
+                <% } else { %>
+                <textarea rows="4" cols="50" id="content" placeholder="content" name="content"><%=p.getContent()%></textarea>
+                <% }%>
                 <br>
                 <button type="submit" value="submit" id="submitButton"> Submit </button>
             </form>
