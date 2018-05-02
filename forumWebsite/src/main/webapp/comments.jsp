@@ -56,7 +56,15 @@ Author     : Seanoh
                     User currentUser = (User) session.getAttribute("user");
                     if (currentUser.getUserID() == (currentPost.getPoster()).getUserID()) {
                         out.println("<form action='editPost.jsp' method='post' id='formEditPost'><input type='hidden' value=' + currentPost.getPostID() name='postID'><input type='submit' value='Edit' id='editPost' class='actionButton'> </form>");
-                        out.println("<form action='deletePost.jsp' method='post' id='formDeletePost'><input type='hidden' value=' + currentPost.getPostID() name='postID'><input type='submit' value='Delete' id='deletePost' class='actionButton'> </form>");
+                        
+                %>
+                                <form action="FrontController" method="post" id="formDeletePost">
+                                <input type="hidden" name="postID" value="<%=+currentPost.getPostID()%>">
+                                <input type="hidden" name="action" value="deletePost">
+                                <input type="submit" value="Delete" id="deletePost" class="actionButton">
+                                 </form>
+                                
+                <%                
                     }
 
                 %>
