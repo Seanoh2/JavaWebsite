@@ -15,8 +15,13 @@
         <link rel=stylesheet" type="text/css" href="Style/header.css">
     </head>
     <body>
-        <h1 id="messageLog">
-            Are you sure you want to log out?
-        </h1>
+        <div id="logContainer">
+            <center><h1 id="messageLog">Are you sure you want to log out?</h1></center>
+
+            <center>
+                <button type="button" class="logControl" value="No" onclick="window.location.href = 'profile.jsp'">No</button>
+                <button type="button" class="logControl" value="Yes" onclick="<%session.removeAttribute("user");%>window.location.href = 'home.jsp'">Yes</button>
+            </center>
+        </div>
     </body>
 </html>

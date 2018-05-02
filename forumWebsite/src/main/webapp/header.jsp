@@ -48,7 +48,7 @@
 
         <%
             } else {
-                out.println("<p id='loggedIn'> Hello </p> <a href='profile.jsp' id='loggedInName'>" + loggedIn.getEmail() + "</a>");
+                out.println("<p id='loggedIn'> Hello </p> <a href='profile.jsp' id='loggedInName'>" + loggedIn.getFirstName()+ "</a>");
             }
 
             if (loggedIn != null) {

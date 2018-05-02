@@ -10,10 +10,50 @@ and open the template in the editor.
 
 #editTextPost{
     position:absolute;
-    margin-top:300px;
-    border-style:solid;
-    border-color:white;
-    border-width:1px;
+    margin-top:200px;
+    margin-left:400px;
     height:400px;
     width:500px;
+    background-color:#1f1f21;
+    box-shadow: 5px 10px #1a1b1c;
+}
+
+#title{
+    background-color: rgba(255, 0, 0, 0);
+    border: solid;
+    border-color: white;
+    border-width: 1px;
+    width:80%;
+    margin-left:10%;
+    margin-top:20%;
+    height:40px;
+    color:white;
+    font-family:fantasy;
+    font-size:14px;
+}
+
+#content{
+    background-color: rgba(255, 0, 0, 0);
+    border: solid;
+    border-color: white;
+    border-width: 1px;
+    width:80%;
+    margin-left:10%;
+    color:white;
+    font-family:fantasy;
+    font-size:14px;
+    height:10%;
+    margin-top:10%;
+}
+
+#submitButton{
+     background-color: rgba(255, 0, 0, 0);
+    border: solid;
+    border-color: white;
+    border-width: 1px;
+    height:40px;
+    width:100px;
+    color:white;
+    margin-left:200px;
+    margin-top:30px;
 }

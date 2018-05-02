@@ -10,3 +10,23 @@ and open the template in the editor.
 #messageLog{
     color:white;
 }
+
+#logContainer{
+    background-color:#1f1f21;
+    box-shadow: 5px 10px #1a1b1c;
+    height: 170px;
+    width: 400px;
+    position: absolute;
+    margin-left: 450px;
+    margin-top: 200px;
+}
+
+.logControl{
+    background-color: rgba(255, 0, 0, 0);
+    border: solid;
+    border-color: white;
+    border-width:1px;
+    color: white;
+    height:40px;
+    width:100px;
+}
