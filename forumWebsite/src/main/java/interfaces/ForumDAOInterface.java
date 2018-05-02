@@ -19,9 +19,4 @@ public interface ForumDAOInterface {
     public ArrayList<Forum> getForumsByTitle(String title);
     
     public Forum getForumByID(int ID);
-    
-    public boolean addForum();
-    
-    public boolean deleteForum();
-    
 }

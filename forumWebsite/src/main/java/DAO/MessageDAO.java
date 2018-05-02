@@ -34,35 +34,20 @@ public class MessageDAO extends DAO {
         try {
             conn = getConnection();
 
-            String query = "SELECT MessageID, sender.UserID, sender.FirstName, sender.LastName,"
-                    + " receiver.UserID, receiver.FirstName, receiver.LastName, Type, Time, Content"
-                    + " FROM Messages"
-                    + " INNER JOIN users AS sender ON sender.UserID = SenderID"
-                    + " INNER JOIN users AS receiver ON receiver.UserID = ReceiverID"
-                    + " WHERE SenderID = ?";
+            String query = "SELECT * FROM messages;";
             ps = conn.prepareStatement(query);
             ps.setInt(1, UserID);
             rs = ps.executeQuery();
 
             while (rs.next()) {
+                UserDAO userdao = new UserDAO("forumdatabase");
+                User us = userdao.findUserByID(rs.getInt("SenderID"));
+                User ur = userdao.findUserByID(rs.getInt("ReceiverID"));
+                
                 message = new Message(
                         rs.getInt("MessageID"),
-                        new User(
-                                rs.getInt("sender.UserID"),
-                                rs.getString("sender.FirstName"),
-                                rs.getString("sender.LastName"),
-                                null,
-                                null,
-                                false
-                        ),
-                        new User(
-                                rs.getInt("receiver.UserID"),
-                                rs.getString("receiver.FirstName"),
-                                rs.getString("receiver.LastName"),
-                                null,
-                                null,
-                                false
-                        ),
+                        us,
+                        ur,
                         rs.getInt("Type"),
                         rs.getDate("Time"),
                         rs.getString("Content")
@@ -101,35 +86,20 @@ public class MessageDAO extends DAO {
         try {
             conn = getConnection();
 
-            String query = "SELECT MessageID, sender.UserID, sender.FirstName, sender.LastName,"
-                    + " receiver.UserID, receiver.FirstName, Type, Time, Content"
-                    + " FROM Messages"
-                    + " INNER JOIN users AS sender ON sender.UserID = SenderID"
-                    + " INNER JOIN users AS receiver ON receiver.UserID = ReceiverID"
-                    + " WHERE ReceiverID = ?";
+            String query = "SELECT * FROM messages";
             ps = conn.prepareStatement(query);
             ps.setInt(1, UserID);
             rs = ps.executeQuery();
 
             while (rs.next()) {
+                UserDAO userdao = new UserDAO("forumdatabase");
+                User us = userdao.findUserByID(rs.getInt("SenderID"));
+                User ur = userdao.findUserByID(rs.getInt("ReceiverID"));
+                
                 message = new Message(
                         rs.getInt("MessageID"),
-                        new User(
-                                rs.getInt("sender.UserID"),
-                                rs.getString("sender.FirstName"),
-                                rs.getString("sender.LastName"),
-                                null,
-                                null,
-                                false
-                        ),
-                        new User(
-                                rs.getInt("receiver.UserID"),
-                                rs.getString("receiver.FirstName"),
-                                rs.getString("receiver.LastName"),
-                                null,
-                                null,
-                                false
-                        ),
+                        us,
+                        ur,
                         rs.getInt("Type"),
                         rs.getDate("Time"),
                         rs.getString("Content")

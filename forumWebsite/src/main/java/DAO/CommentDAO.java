@@ -35,51 +35,23 @@ public class CommentDAO extends DAO {
 
         try {
             conn = getConnection();
-            String query = "SELECT CommentID, posts.postID, posts.userID, posts.Title, posts.ForumID, sender.UserID, sender.FirstName,"
-                    + " receiver.UserID, receiver.FirstName, Time, comments.Content"
-                    + " FROM comments"
-                    + " INNER JOIN users AS sender ON sender.UserID = comments.SenderID"
-                    + " INNER JOIN users AS receiver ON receiver.UserID = comments.ReceiverID"
-                    + " INNER JOIN posts AS posts ON posts.PostID = comments.PostID"
-                    + " WHERE SenderID = ?";
+            String query = "SELECT * FROM comments WHERE userID = ?";
             ps = conn.prepareStatement(query);
             ps.setInt(1, senderID);
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                c = new Comment(
+                PostDAO postdao = new PostDAO("forumdatabase");
+                UserDAO userdao = new UserDAO("forumdatabase");
+                
+                Post p = postdao.getPostByID(rs.getInt("PostID"));
+                User us = userdao.findUserByID(rs.getInt("SenderID"));
+                User ur = userdao.findUserByID(rs.getInt("ReceiverID"));
+                   c = new Comment(
                         rs.getInt("CommentID"),
-                        new Post(
-                                rs.getInt("posts.postID"),
-                                new User(
-                                        rs.getInt("posts.userID"),
-                                        null,
-                                        null,
-                                        null,
-                                        null,
-                                        false
-                                ),
-                                rs.getInt("posts.ForumID"),
-                                false,
-                                rs.getString("posts.Title"),
-                                null
-                        ),
-                        new User(
-                                rs.getInt("sender.UserID"),
-                                rs.getString("sender.FirstName"),
-                                null,
-                                null,
-                                null,
-                                false
-                        ),
-                        new User(
-                                rs.getInt("receiver.UserID"),
-                                rs.getString("receiver.FirstName"),
-                                null,
-                                null,
-                                null,
-                                false
-                        ),
+                        p,
+                        us,
+                        ur,
                         rs.getDate("Time"),
                         rs.getString("Content")
                 );
@@ -114,51 +86,23 @@ public class CommentDAO extends DAO {
 
         try {
             conn = getConnection();
-            String query = "SELECT CommentID, posts.postID, posts.userID, posts.Title, posts.ForumID, sender.UserID, sender.FirstName,"
-                    + " receiver.UserID, receiver.FirstName, Time, comments.Content"
-                    + " FROM comments"
-                    + " INNER JOIN users AS sender ON sender.UserID = comments.SenderID"
-                    + " INNER JOIN users AS receiver ON receiver.UserID = comments.ReceiverID"
-                    + " INNER JOIN posts AS posts ON posts.PostID = comments.PostID"
-                    + " WHERE ReceiverID = ?";
+            String query = "SELECT * FROM Comments WHERE ReceiverID = ?";
             ps = conn.prepareStatement(query);
             ps.setInt(1, receiverID);
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                c = new Comment(
+                PostDAO postdao = new PostDAO("forumdatabase");
+                UserDAO userdao = new UserDAO("forumdatabase");
+                
+                Post p = postdao.getPostByID(rs.getInt("PostID"));
+                User us = userdao.findUserByID(rs.getInt("SenderID"));
+                User ur = userdao.findUserByID(rs.getInt("ReceiverID"));
+                   c = new Comment(
                         rs.getInt("CommentID"),
-                        new Post(
-                                rs.getInt("posts.postID"),
-                                new User(
-                                        rs.getInt("posts.userID"),
-                                        null,
-                                        null,
-                                        null,
-                                        null,
-                                        false
-                                ),
-                                rs.getInt("posts.ForumID"),
-                                false,
-                                rs.getString("posts.Title"),
-                                null
-                        ),
-                        new User(
-                                rs.getInt("sender.UserID"),
-                                rs.getString("sender.FirstName"),
-                                null,
-                                null,
-                                null,
-                                false
-                        ),
-                        new User(
-                                rs.getInt("receiver.UserID"),
-                                rs.getString("receiver.FirstName"),
-                                null,
-                                null,
-                                null,
-                                false
-                        ),
+                        p,
+                        us,
+                        ur,
                         rs.getDate("Time"),
                         rs.getString("Content")
                 );
@@ -193,51 +137,23 @@ public class CommentDAO extends DAO {
 
         try {
             conn = getConnection();
-            String query = "SELECT CommentID, posts.postID, posts.userID, posts.Title, posts.ForumID, sender.UserID, sender.FirstName,"
-                    + " receiver.UserID, receiver.FirstName, Time, comments.Content"
-                    + " FROM comments"
-                    + " INNER JOIN users AS sender ON sender.UserID = comments.SenderID"
-                    + " INNER JOIN users AS receiver ON receiver.UserID = comments.ReceiverID"
-                    + " INNER JOIN posts AS posts ON posts.PostID = comments.PostID"
-                    + " WHERE posts.postID = ?";
+            String query = "SELECT * FROM Comments WHERE PostID = ?";
             ps = conn.prepareStatement(query);
             ps.setInt(1, postID);
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                c = new Comment(
+                PostDAO postdao = new PostDAO("forumdatabase");
+                UserDAO userdao = new UserDAO("forumdatabase");
+                
+                Post p = postdao.getPostByID(rs.getInt("PostID"));
+                User us = userdao.findUserByID(rs.getInt("SenderID"));
+                User ur = userdao.findUserByID(rs.getInt("ReceiverID"));
+                   c = new Comment(
                         rs.getInt("CommentID"),
-                        new Post(
-                                rs.getInt("posts.postID"),
-                                new User(
-                                        rs.getInt("posts.userID"),
-                                        null,
-                                        null,
-                                        null,
-                                        null,
-                                        false
-                                ),
-                                rs.getInt("posts.ForumID"),
-                                false,
-                                rs.getString("posts.Title"),
-                                null
-                        ),
-                        new User(
-                                rs.getInt("sender.UserID"),
-                                rs.getString("sender.FirstName"),
-                                null,
-                                null,
-                                null,
-                                false
-                        ),
-                        new User(
-                                rs.getInt("receiver.UserID"),
-                                rs.getString("receiver.FirstName"),
-                                null,
-                                null,
-                                null,
-                                false
-                        ),
+                        p,
+                        us,
+                        ur,
                         rs.getDate("Time"),
                         rs.getString("Content")
                 );

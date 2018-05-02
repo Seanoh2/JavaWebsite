@@ -162,14 +162,4 @@ public class ForumDAO extends DAO implements ForumDAOInterface {
         return forum;
     }
 
-    @Override
-    public boolean addForum() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean deleteForum() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import DTOS.Forum;
 import DTOS.Post;
 import DTOS.User;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
@@ -19,13 +20,13 @@ import java.util.ArrayList;
  * @author Sean
  */
 public class PostDAO extends DAO {
-    
+
     public PostDAO(String databaseName) {
         super(databaseName);
     }
-    
+
     public ArrayList<Post> getAllPosts() {
-     Connection conn = null;
+        Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         Post p = null;
@@ -33,21 +34,16 @@ public class PostDAO extends DAO {
 
         try {
             conn = getConnection();
-            String query = "SELECT users.UserID, users.FirstName, users.LastName, users.Email, users.isAdmin, PostID, ForumID, IsLink, Title, Content FROM posts INNER JOIN users ON posts.UserID = users.UserID;";
+            String query = "SELECT * FROM posts";
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
+            UserDAO userdao = new UserDAO("forumdatabase");
 
             while (rs.next()) {
+                User poster = userdao.findUserByID(rs.getInt("UserID"));
                 p = new Post(
                         rs.getInt("PostID"),
-                        new User(
-                                rs.getInt("UserID"),
-                                rs.getString("FirstName"),
-                                rs.getString("LastName"),
-                                rs.getString("Email"),
-                                null,
-                                rs.getBoolean("isAdmin")
-                            ),
+                        poster,
                         rs.getInt("ForumID"),
                         rs.getBoolean("IsLink"),
                         rs.getString("Title"),
@@ -72,10 +68,11 @@ public class PostDAO extends DAO {
                 System.out.println("Exception occured in the finally section of the getAllPosts() method: " + e.getMessage());
             }
         }
-        return postList;   
+        return postList;
     }
+
     public ArrayList<Post> getPostsByForum(int forumID) {
-     Connection conn = null;
+        Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         Post p = null;
@@ -84,25 +81,17 @@ public class PostDAO extends DAO {
         try {
             conn = getConnection();
 
-            String query = "SELECT users.UserID, users.FirstName, users.LastName, users.Email, users.isAdmin,"
-                    + " PostID, ForumID, IsLink, Title, Content FROM posts "
-                    + " INNER JOIN users ON posts.UserID = users.UserID "
-                    + " WHERE ForumID = ? ";
+            String query = "SELECT * FROM forum WHERE ForumID = ?";
             ps = conn.prepareStatement(query);
             ps.setInt(1, forumID);
             rs = ps.executeQuery();
+            UserDAO userdao = new UserDAO("forumdatabase");
 
             while (rs.next()) {
+                User poster = userdao.findUserByID(rs.getInt("UserID"));
                 p = new Post(
                         rs.getInt("PostID"),
-                        new User(
-                                rs.getInt("UserID"),
-                                rs.getString("FirstName"),
-                                rs.getString("LastName"),
-                                rs.getString("Email"),
-                                null,
-                                rs.getBoolean("isAdmin")
-                            ),
+                        poster,
                         rs.getInt("ForumID"),
                         rs.getBoolean("IsLink"),
                         rs.getString("Title"),
@@ -127,11 +116,11 @@ public class PostDAO extends DAO {
                 System.out.println("Exception occured in the finally section of the getPostsByForum() method: " + e.getMessage());
             }
         }
-        return postList;   
+        return postList;
     }
-    
+
     public ArrayList<Post> getPostsByUserID(int userID) {
-     Connection conn = null;
+        Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         Post p = null;
@@ -140,25 +129,17 @@ public class PostDAO extends DAO {
         try {
             conn = getConnection();
 
-            String query = "SELECT users.UserID, users.FirstName, users.LastName, users.Email, users.isAdmin,"
-                    + " PostID, ForumID, IsLink, Title, Content FROM posts "
-                    + " INNER JOIN users ON posts.UserID = users.UserID "
-                    + " WHERE posts.UserID = ? ";
+            String query = "SELECT * FROM forum WHERE UserID = ?";
             ps = conn.prepareStatement(query);
             ps.setInt(1, userID);
             rs = ps.executeQuery();
+            UserDAO userdao = new UserDAO("forumdatabase");
 
             while (rs.next()) {
+                User poster = userdao.findUserByID(rs.getInt("UserID"));
                 p = new Post(
                         rs.getInt("PostID"),
-                        new User(
-                                rs.getInt("UserID"),
-                                rs.getString("FirstName"),
-                                rs.getString("LastName"),
-                                rs.getString("Email"),
-                                null,
-                                rs.getBoolean("isAdmin")
-                            ),
+                        poster,
                         rs.getInt("ForumID"),
                         rs.getBoolean("IsLink"),
                         rs.getString("Title"),
@@ -183,37 +164,28 @@ public class PostDAO extends DAO {
                 System.out.println("Exception occured in the finally section of the getPostsByForum() method: " + e.getMessage());
             }
         }
-        return postList;   
+        return postList;
     }
-    
+
     public Post getPostByID(int postID) {
-         Connection conn = null;
+        Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         Post post = null;
 
         try {
             conn = getConnection();
-
-            String query = "SELECT users.UserID, users.FirstName, users.LastName, users.Email, users.isAdmin,"
-                    + " PostID, ForumID, IsLink, Title, Content FROM posts "
-                    + " INNER JOIN users ON posts.UserID = users.UserID "
-                    + " WHERE posts.postID = ? ";
+            String query = "SELECT * FROM post WHERE postID = ?";
             ps = conn.prepareStatement(query);
             ps.setInt(1, postID);
             rs = ps.executeQuery();
+            UserDAO userdao = new UserDAO("forumdatabase");
 
             while (rs.next()) {
+                User poster = userdao.findUserByID(rs.getInt("UserID"));
                 post = new Post(
                         rs.getInt("PostID"),
-                        new User(
-                                rs.getInt("UserID"),
-                                rs.getString("FirstName"),
-                                rs.getString("LastName"),
-                                rs.getString("Email"),
-                                null,
-                                rs.getBoolean("isAdmin")
-                            ),
+                        poster,
                         rs.getInt("ForumID"),
                         rs.getBoolean("IsLink"),
                         rs.getString("Title"),
@@ -239,7 +211,7 @@ public class PostDAO extends DAO {
         }
         return post;
     }
-    
+
     public boolean addPost(Post p) {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -248,7 +220,7 @@ public class PostDAO extends DAO {
 
         try {
             conn = getConnection();
-            
+
             String query = "INSERT INTO posts VALUES (NULL, ?, ?, ?, ?, ?)";
             ps = conn.prepareStatement(query);
             ps.setInt(1, p.getPoster().getUserID());
@@ -286,7 +258,7 @@ public class PostDAO extends DAO {
         return result;
 
     }
-    
+
     public boolean editPost(Post p) {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -295,7 +267,7 @@ public class PostDAO extends DAO {
 
         try {
             conn = getConnection();
-            
+
             String query = "UPDATE POSTS SET Title = ?, Content = ? WHERE PostID = ?";
             ps = conn.prepareStatement(query);
             ps.setString(1, p.getTitle());
@@ -331,7 +303,7 @@ public class PostDAO extends DAO {
         return result;
 
     }
-    
+
     public boolean deletePost(int id) {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -377,4 +349,3 @@ public class PostDAO extends DAO {
 
     }
 }
-
