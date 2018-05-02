@@ -34,7 +34,8 @@ Author     : Seanoh
             <div id="content">
                 <% if (currentPost.isIsLink()) {%>
                 <% if (currentPost.getContent().contains("watch?v") == true) {%>
-                <iframe width="500" height="315" src="http://www.google.ie" id="videoSource" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <p><%=currentPost.getContent()%></p>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/<%=(currentPost.getContent()).substring((currentPost.getContent()).lastIndexOf('=')+1)%>"  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 <% } else {%>
                 <a href="<%=currentPost.getContent()%>" target="_blank"><%=currentPost.getContent()%></a>
                 <% }

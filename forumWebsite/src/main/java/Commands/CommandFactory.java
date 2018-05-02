@@ -76,9 +76,7 @@ public class CommandFactory {
                     command = new EditPostCommand();
                     break;
                     
-                case "deletePost":
-                    command = new DeletePostCommand();
-                    break;
+                
                     
                 case "editUser":
                     command = new EditUserCommand();
