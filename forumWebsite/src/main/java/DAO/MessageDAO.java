@@ -36,7 +36,7 @@ public class MessageDAO extends DAO {
         try {
             conn = getConnection();
 
-            String query = "SELECT * FROM messages;";
+            String query = "SELECT * FROM messages WHERE SenderID = ?";
             ps = conn.prepareStatement(query);
             ps.setInt(1, UserID);
             rs = ps.executeQuery();

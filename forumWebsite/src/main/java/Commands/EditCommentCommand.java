@@ -17,5 +17,10 @@ import javax.servlet.http.HttpSession;
  * @author tomwozzer
  */
 public class EditCommentCommand implements Command{
+
+    @Override
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
