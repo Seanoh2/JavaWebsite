@@ -5,29 +5,22 @@ $(document).ready(function () {
         var rating = $(this).data('value');
         var ratingView = 0;
 
-        var ratingDiv = '#rating' + post.toString();
-        $(ratingDiv.toString()).find(':input').not(this).prop('checked', false);
-
         if ($(this).is(":checked")) {
             ratingView = rating;
         } else {
             if (rating === 1) {
-                if ($(ratingDiv.toString()).find(':input').not(this).is('checked')) {
-                    ratingView = -2;
-                } else {
-                    ratingView = -1;
-                }
-            } else if (rating === -1) {
-                if ($(ratingDiv.toString()).find(':input').not(this).is('checked')) {
-                    ratingView = 2;
-                } else {
-                    ratingView = 1;
-                }
+                ratingView = -1;
+            } else if (rating === -1){
+                ratingView = 1;
             } else {
                 ratingView = 0;
             }
             rating = 0;
         }
+
+        var ratingDiv = '#rating' + post.toString();
+        console.log(ratingDiv.toString());
+        $(ratingDiv.toString()).find(':input').not(this).prop('checked', false);
 
         $.ajax({
             url: "RatingServlet",
