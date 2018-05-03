@@ -35,6 +35,7 @@
 
             ArrayList<Post> posts = postdao.getPostsByForum(id);
             HashMap scores = ratingdao.getRatingsByForum();
+            HashMap ratingCheck = ratingdao.getRatingsByPost(user.getUserID());
             HashMap comments = commentdao.countCommentsByPost();
         %>                
         <title>/<%= f1.getTitle()%>/</title>
@@ -72,15 +73,30 @@
             for (Post post : posts) {
                 Object rating = scores.get(post.getPostID());
                 Object commentNum = comments.get(post.getPostID());
+                Object commentCheck = ratingCheck.get(post.getPostID());
+ 
+                String voteUp = "";
+                String voteDown = "";
                 if (rating == null) {
                     rating = "0";
-                }
-                int score = Integer.parseInt(rating.toString());
+                }       
                 if (commentNum == null) {
                     commentNum = "0";
                 }
+                if (commentCheck == null) {
+                    commentCheck = "";
+                } else {
+                     String commentValue = commentCheck.toString();
+                    if(commentValue.equals("1")) {
+                        voteUp="checked='checked'";
+                    } else if(commentValue.equals("1")) {
+                        voteDown="checked='checked'";
+                    } else {
+                        
+                    }
+                }
+                int score = Integer.parseInt(rating.toString());
                 int numOfComments = Integer.parseInt(commentNum.toString());
-                
         %>     
         <div class="postContainer">
             <% if(post.isIsLink()) { %>
@@ -91,9 +107,9 @@
             <p class="content"> <%=post.getContent()%> </p>
             <a href="../profile.jsp?<%=post.getPoster().getUserID()%>" class="op"> <%=post.getPoster().getFirstName() + " " + post.getPoster().getLastName()%> </a>
             <div id="rating<%=post.getPostID()%>">
-                <input type="checkbox" class="ratingButton" data-post="<%=post.getPostID()%>" data-user="<%=user.getUserID()%>" data-value="1"> &#x2b; </button>
+                <input type="checkbox" class="ratingButton" data-post="<%=post.getPostID()%>" data-user="<%=user.getUserID()%>" data-value="1" <%=voteUp%>> &#x2b; </button>
                 <p id="ratingScore<%=post.getPostID()%>"><%=score%></p>
-                <input type="checkbox" class="ratingButton" data-post="<%=post.getPostID()%>" data-user="<%=user.getUserID()%>" data-value="-1"> &#8722; </button>
+                <input type="checkbox" class="ratingButton" data-post="<%=post.getPostID()%>" data-user="<%=user.getUserID()%>" data-value="-1" <%=voteDown%>> &#8722; </button>
             </div>
              <a class="" href="comments.jsp?ID=<%=post.getPostID()%>"><%=numOfComments%> Comment</a>
         </div>
