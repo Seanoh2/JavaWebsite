@@ -23,12 +23,13 @@ public class DeleteCommentCommand  implements Command{
         // Get the information entered into the form by the user
         // Get the parameters from the previous page       
         int commentID = Integer.parseInt(request.getParameter("commentID"));
+        int postID = Integer.parseInt(request.getParameter("postID"));
 
         if (commentID != 0) {
             //Call your DAO method 
             CommentDAO commentdao = new CommentDAO("forumdatabase");
             if (commentdao.deleteComment(commentID)) {
-                forwardToJsp = "profile.jsp";
+                forwardToJsp = "comments.jsp?ID="+postID;
             } else {
                 String errorMessage = "Invalid credentials.";
                 session.setAttribute("errorMessage", errorMessage);

@@ -68,7 +68,6 @@ Author     : Seanoh
 
                 <%
                     }
-
                 %>
             </div>   
 
@@ -85,14 +84,16 @@ Author     : Seanoh
             <br/>
             <a class="sender" href="viewProfile.jsp?ID=<%=comment.getSender().getUserID()%>">-<%=comment.getSender().getFirstName()%></a>
             <div id="userControlArea">
-                <% if ((comment.getSender()).getUserID() == currentUser.getUserID()){%>
-                
-                    <form action='editComment.jsp' method='post' id='formEditComment'>
+                <% if ((comment.getSender()).getUserID() == currentUser.getUserID()) {%>
+
+                <form action='editComment.jsp' method='post' id='formEditComment'>
                     <input type='hidden' value='<%=comment.getCommentID()%>' name='commentID'>
+                    <input type='hidden' value='<%=comment.getPost().getPostID()%>' name='postID'>
                     <input type='submit' value='Edit' id='editComment' class='actionButtonComment'> 
                 </form>
                 <form action="FrontController" method="post" id="formDeleteComment">
                     <input type="hidden" name="commentID" value="<%=comment.getCommentID()%>">
+                    <input type='hidden' value='<%=comment.getPost().getPostID()%>' name='postID'>
                     <input type="hidden" name="action" value="deleteComment">
                     <input type="submit" value="Delete" id="deleteComment" class="actionButtonComment">
                 </form>

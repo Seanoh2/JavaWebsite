@@ -67,7 +67,6 @@ public class RatingDAO extends DAO {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        Rating r = null;
         HashMap ratingMap = new HashMap();
 
         try {
@@ -95,6 +94,43 @@ public class RatingDAO extends DAO {
                 }
             } catch (SQLException e) {
                 System.out.println("Exception occured in the finally section of the getRatingsByForumID() method: " + e.getMessage());
+            }
+        }
+        return ratingMap;
+    }
+    
+    public HashMap getRatingsByPost(int userID) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        HashMap ratingMap = new HashMap();
+
+        try {
+            conn = getConnection();
+
+            String query = "SELECT postID,rating FROM ratings WHERE userID = ?";
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, userID);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                ratingMap.put(rs.getInt("postID"), rs.getInt("rating"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception occured in the getRatingsByPost() method: " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    freeConnection(conn);
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception occured in the finally section of the getRatingsByPost() method: " + e.getMessage());
             }
         }
         return ratingMap;
