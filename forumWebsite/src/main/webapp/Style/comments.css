@@ -115,7 +115,7 @@ body{
 }
 
 .actionButton{
-     background-color: rgba(255, 0, 0, 0);
+    background-color: rgba(255, 0, 0, 0);
     color:white;
     border-style:none;
     font-size:12px;
@@ -134,4 +134,19 @@ body{
 
 #videoSource{
     z-index: 1;
+}
+
+.actionButtonComment{
+    transition:0.5s;
+    background-color: rgba(255, 0, 0, 0);
+    color:white;
+    border-style:none;
+    font-size:12px;
+    margin-left:100px;
+}
+
+.actionButtonComment:hover{
+    transition:0.5s;
+    color:#76e291;
+    
 }

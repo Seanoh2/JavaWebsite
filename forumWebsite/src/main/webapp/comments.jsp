@@ -84,7 +84,20 @@ Author     : Seanoh
             <p class="commentReply"><%=comment.getContent()%></p>
             <br/>
             <a class="sender" href="viewProfile.jsp?ID=<%=comment.getSender().getUserID()%>">-<%=comment.getSender().getFirstName()%></a>
-
+            <div id="userControlArea">
+                <% if ((comment.getSender()).getUserID() == currentUser.getUserID()){%>
+                
+                    <form action='editComment.jsp' method='post' id='formEditComment'>
+                    <input type='hidden' value='<%=comment.getCommentID()%>' name='commentID'>
+                    <input type='submit' value='Edit' id='editComment' class='actionButtonComment'> 
+                </form>
+                <form action="FrontController" method="post" id="formDeleteComment">
+                    <input type="hidden" name="commentID" value="<%=comment.getCommentID()%>">
+                    <input type="hidden" name="action" value="deleteComment">
+                    <input type="submit" value="Delete" id="deleteComment" class="actionButtonComment">
+                </form>
+                <%}%>
+            </div>
         </div>
         <% }%>
 

@@ -83,6 +83,14 @@ public class CommandFactory {
                 case "editUser":
                     command = new EditUserCommand();
                     break;
+                    
+                case "editComment":
+                    command = new EditCommentCommand();
+                    break;
+                    
+                case "deleteComment":
+                    command = new DeleteCommentCommand();
+                    break;
                                         
                 default:
                     command = new NoValidActionCommand();
