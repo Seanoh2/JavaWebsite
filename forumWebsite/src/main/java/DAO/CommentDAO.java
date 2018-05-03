@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -224,6 +225,42 @@ public class CommentDAO extends DAO {
 
         return result;
 
+    }
+    
+    public HashMap countCommentsByPost() {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        HashMap ratingMap = new HashMap();
+
+        try {
+            conn = getConnection();
+
+            String query = "SELECT postID,count(postID) AS numOfComments FROM comments GROUP BY postID";
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                ratingMap.put(rs.getInt("postID"), rs.getInt("numOfComments"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception occured in the getRatingsByForumID() method: " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    freeConnection(conn);
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception occured in the finally section of the countCommentsByPost() method: " + e.getMessage());
+            }
+        }
+        return ratingMap;
     }
 
 }

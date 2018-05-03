@@ -4,6 +4,7 @@
     Author     : Tomwozzer
 --%>
 
+<%@page import="DAO.CommentDAO"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="DAO.RatingDAO"%>
 <%@page import="DTOS.User"%>
@@ -27,12 +28,14 @@
             ForumDAO forumdao = new ForumDAO("forumdatabase");
             PostDAO postdao = new PostDAO("forumdatabase");
             RatingDAO ratingdao = new RatingDAO("forumdatabase");
+            CommentDAO commentdao = new CommentDAO("forumdatabase");
 
             Forum f1 = forumdao.getForumByID(id);
             User user = (User) session.getAttribute("user");
 
             ArrayList<Post> posts = postdao.getPostsByForum(id);
             HashMap scores = ratingdao.getRatingsByForum();
+            HashMap comments = commentdao.countCommentsByPost();
         %>                
         <title>/<%= f1.getTitle()%>/</title>
 
@@ -68,10 +71,16 @@
         <%
             for (Post post : posts) {
                 Object rating = scores.get(post.getPostID());
+                Object commentNum = comments.get(post.getPostID());
                 if (rating == null) {
                     rating = "0";
                 }
                 int score = Integer.parseInt(rating.toString());
+                if (commentNum == null) {
+                    commentNum = "0";
+                }
+                int numOfComments = Integer.parseInt(commentNum.toString());
+                
         %>     
         <div class="postContainer">
             <% if(post.isIsLink()) { %>
@@ -86,6 +95,7 @@
                 <p id="ratingScore<%=post.getPostID()%>"><%=score%></p>
                 <input type="checkbox" class="ratingButton" data-post="<%=post.getPostID()%>" data-user="<%=user.getUserID()%>" data-value="-1"> &#8722; </button>
             </div>
+             <a class="" href="comments.jsp?ID=<%=post.getPostID()%>"><%=numOfComments%> Comment</a>
         </div>
         <% }%>
 
