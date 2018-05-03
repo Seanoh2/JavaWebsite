@@ -39,7 +39,8 @@
                 <h2 class="headings">Your Profile</h2>
                 <br>
                 <br>
-                <p class="details"> Email address: <%=u1.getEmail()%> </p>
+                <p class="details"> Email address:</p>
+                <p class="details"><%=u1.getEmail()%> </p>
                 <p class="details"> First name: <%=u1.getFirstName()%> </p>
                 <p class="details"> Last name: <%=u1.getLastName()%> </p>
                 <input type="submit" value="Update Details" id="updateDetails">
